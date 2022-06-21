@@ -5,8 +5,9 @@ export const Slogan = () => {
   return (
     <Container
       sx={{
-        marginTop: '30px',
+        position: 'absolute',
         backgroundColor: 'red',
+        marginTop: '80px',
       }}
     >
       <Typography
@@ -20,6 +21,9 @@ export const Slogan = () => {
           display: 'flex',
           justifyContent: 'center',
           textAlign: 'center',
+          '@media (min-width: 768px)': {
+            fontSize: '20px',
+          },
         }}
       >
         Znajdź tanie loty w wymarzonej dla Ciebie pogodzie w przeciągu

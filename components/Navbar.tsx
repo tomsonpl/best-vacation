@@ -44,7 +44,7 @@ export const Navbar = () => {
           </Toolbar>
         </Container>
       </AppBar>
-      {/*  delete container later */}
+      {/*delete container later*/}
       {/*<Container>*/}
       {/*  <Box sx={{ my: 2 }}>*/}
       {/*    {[...new Array(40)]*/}
@@ -57,7 +57,7 @@ export const Navbar = () => {
       {/*      .join('\n')}*/}
       {/*  </Box>*/}
       {/*</Container>*/}
-      {/*  delete container later */}
+      {/*delete container later*/}
     </>
   )
 }
