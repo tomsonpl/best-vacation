@@ -35,26 +35,11 @@ const Home: NextPage = () => {
         <Container
           sx={{
             position: 'absolute',
-            mt: '45%',
+            mt: { xs: '45%', sm: '25%', md: '18%', lg: '12%' },
             backgroundColor: 'white',
             width: '85%',
             height: '70%',
             borderRadius: '10px',
-            '@media (min-width: 450px)': {
-              mt: '33%',
-            },
-            '@media (min-width: 600px)': {
-              mt: '25%',
-            },
-            '@media (min-width: 768px)': {
-              mt: '25%',
-            },
-            '@media (min-width: 900px)': {
-              mt: '18%',
-            },
-            '@media (min-width: 1200px)': {
-              mt: '12%',
-            },
           }}
         ></Container>
       </Box>

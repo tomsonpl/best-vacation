@@ -1,11 +1,13 @@
 import * as React from 'react'
-import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
-import CssBaseline from '@mui/material/CssBaseline'
 // import Box from '@mui/material/Box'
-import Container from '@mui/material/Container'
-import { IconButton } from '@mui/material'
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Container,
+  IconButton,
+  CssBaseline,
+} from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import NavSunnyIcon from '../assets/NavSunnyIcon.svg'
 import Image from 'next/image'
