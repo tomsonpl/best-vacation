@@ -9,10 +9,14 @@ import {
   CssBaseline,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
-import NavSunnyIcon from '../assets/NavSunnyIcon.svg'
+import NavSunnyIcon from '../../assets/NavSunnyIcon.svg'
 import Image from 'next/image'
 
-export const Navbar = () => {
+interface IProps {
+  text: string
+  isTestComponent?: boolean
+}
+export const Navbar: React.FC<IProps> = ({ text }) => {
   return (
     <>
       <CssBaseline />
@@ -31,7 +35,7 @@ export const Navbar = () => {
                   marginRight: '10px',
                 }}
               >
-                POGODA NA TANIE WAKACJE
+                {text}
               </Typography>
               <Image
                 src={NavSunnyIcon}
