@@ -32,7 +32,7 @@ export const WeatherCard: React.FC<IProps> = ({
         alignItems: 'center',
         justifyContent: 'center',
         padding: '10px',
-        margin: '10px',
+        margin: '7px',
       }}
     >
       <Typography sx={{ fontSize: '12px' }}>{date}</Typography>

@@ -23,7 +23,7 @@ export const Secondary = Template.bind({})
 Secondary.args = {
   children: 'Button',
   variant: 'outlined',
-  color: 'error',
+  color: 'success',
 }
 
 export const Large = Template.bind({})

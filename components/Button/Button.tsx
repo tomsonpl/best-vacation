@@ -5,11 +5,10 @@ export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode
   variant: 'outlined' | 'contained'
   size: 'small' | 'large'
-  color: 'success' | 'error'
+  color: 'success'
 }
 
 export const BaseButton = ({ children, ...props }: IButtonProps) => {
-  console.log({ props })
   return (
     <Button variant={props.variant} size={props.size} color={props.color}>
       {children}

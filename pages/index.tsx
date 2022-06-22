@@ -5,6 +5,10 @@ import Box from '@mui/material/Box'
 import beach from '../assets/beach.jpg'
 import Container from '@mui/material/Container'
 import { WeatherCardsContainer } from '../components/WeatherCardsContainer/WeatherCardsContainer'
+import { YourCityWeatherInput } from '../components/Input/YourCityWeatherInput'
+import { AirportCityInput } from '../components/Input/AirportCityInput'
+import { TypographySlogan } from '../components/Typography/TypographySlogan'
+import { BaseButton } from '../components/Button/Button'
 
 const Home: NextPage = () => {
   return (
@@ -36,7 +40,13 @@ const Home: NextPage = () => {
             borderRadius: '10px',
           }}
         >
+          <YourCityWeatherInput />
           <WeatherCardsContainer />
+          <AirportCityInput />
+          <TypographySlogan text={'Twoja wymarzona pogoda'} />
+          <BaseButton variant={'contained'} size={'large'} color={'success'}>
+            Szukaj
+          </BaseButton>
         </Container>
       </Box>
     </>
