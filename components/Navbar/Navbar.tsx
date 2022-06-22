@@ -1,5 +1,4 @@
 import * as React from 'react'
-// import Box from '@mui/material/Box'
 import {
   AppBar,
   Toolbar,
@@ -14,7 +13,6 @@ import Image from 'next/image'
 
 interface IProps {
   text: string
-  isTestComponent?: boolean
 }
 export const Navbar: React.FC<IProps> = ({ text }) => {
   return (
@@ -50,20 +48,6 @@ export const Navbar: React.FC<IProps> = ({ text }) => {
           </Toolbar>
         </Container>
       </AppBar>
-      {/*delete container later*/}
-      {/*<Container>*/}
-      {/*  <Box sx={{ my: 2 }}>*/}
-      {/*    {[...new Array(40)]*/}
-      {/*      .map(*/}
-      {/*        () => `Cras mattis consectetur purus sit amet fermentum.*/}
-      {/*Cras justo odio, dapibus ac facilisis in, egestas eget quam.*/}
-      {/*Morbi leo risus, porta ac consectetur ac, vestibulum at eros.*/}
-      {/*Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`*/}
-      {/*      )*/}
-      {/*      .join('\n')}*/}
-      {/*  </Box>*/}
-      {/*</Container>*/}
-      {/*delete container later*/}
     </>
   )
 }
