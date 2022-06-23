@@ -4,14 +4,12 @@ import { Button } from '@mui/material'
 export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode
   variant: 'outlined' | 'contained'
-  size: 'small' | 'large'
-  color: 'success' | 'error'
+  sx: Record<string, unknown>
 }
 
 export const BaseButton = ({ children, ...props }: IButtonProps) => {
-  console.log({ props })
   return (
-    <Button variant={props.variant} size={props.size} color={props.color}>
+    <Button variant={props.variant} sx={props.sx}>
       {children}
     </Button>
   )
