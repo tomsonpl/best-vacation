@@ -1,14 +1,18 @@
 import TextField from '@mui/material/TextField'
+interface IProps {
+  label: string
+  defaultValue: number
+}
 
-export const NumberInput = () => {
+export const NumberInput = (props: IProps) => {
   return (
     <TextField
       type="number"
       name="paid"
-      // label=" "
+      label={props.label}
       variant="outlined"
-      defaultValue={25}
-      sx={{ width: '80px' }}
+      defaultValue={props.defaultValue}
+      sx={{ width: '100px' }}
       // onChange={event => handleChangeInput(inputField.id, event)}
     />
   )
