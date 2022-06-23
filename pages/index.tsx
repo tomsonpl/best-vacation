@@ -9,6 +9,9 @@ import { YourCityWeatherInput } from '../components/Input/YourCityWeatherInput'
 import { AirportCityInput } from '../components/Input/AirportCityInput'
 import { TypographySlogan } from '../components/Typography/TypographySlogan'
 import { BaseButton } from '../components/Button/Button'
+import { NumberInput } from '../components/Input/NumberInput'
+import * as React from 'react'
+import { ChoseWeatherInput } from '../components/Input/ChoseWeatherInput'
 
 const Home: NextPage = () => {
   return (
@@ -44,7 +47,20 @@ const Home: NextPage = () => {
           <WeatherCardsContainer />
           <AirportCityInput />
           <TypographySlogan text={'Twoja wymarzona pogoda'} />
-          <BaseButton variant={'contained'} size={'large'} color={'success'}>
+          <Box>
+            <NumberInput />
+            <span>&#8451;</span>
+            <ChoseWeatherInput />
+          </Box>
+          <BaseButton
+            variant={'contained'}
+            sx={{
+              width: '100%',
+              fontSize: '18px',
+              backgroundColor: '#1976d2',
+              mt: '10px',
+            }}
+          >
             Szukaj
           </BaseButton>
         </Container>

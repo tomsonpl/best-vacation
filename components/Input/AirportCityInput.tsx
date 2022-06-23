@@ -12,5 +12,7 @@ const airportCities = [
 ]
 
 export const AirportCityInput = () => {
-  return <BaseInput cities={airportCities} text={'Wybierz miasto wylotu'} />
+  return (
+    <BaseInput options={airportCities} placeholder={'Wybierz miasto wylotu'} />
+  )
 }

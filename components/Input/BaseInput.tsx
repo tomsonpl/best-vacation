@@ -3,8 +3,8 @@ import Autocomplete from '@mui/material/Autocomplete'
 import Box from '@mui/material/Box'
 
 interface IProps {
-  cities: { label: string }[]
-  text: string
+  options: { label: string }[]
+  placeholder: string
 }
 
 export const BaseInput = (props: IProps) => {
@@ -12,9 +12,11 @@ export const BaseInput = (props: IProps) => {
     <Box sx={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
       <Autocomplete
         disablePortal
-        options={props.cities}
+        options={props.options}
         sx={{ width: '100%' }}
-        renderInput={(params) => <TextField {...params} label={props.text} />}
+        renderInput={(params) => (
+          <TextField {...params} label={props.placeholder} />
+        )}
       />
     </Box>
   )

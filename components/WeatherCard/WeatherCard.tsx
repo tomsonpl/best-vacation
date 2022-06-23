@@ -5,7 +5,6 @@ import * as React from 'react'
 
 interface IProps {
   borderColor?: string
-  key: number
   date: string
   weatherImage: string
   temperatureDay: number
