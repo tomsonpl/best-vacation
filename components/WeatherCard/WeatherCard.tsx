@@ -21,7 +21,7 @@ export const WeatherCard: React.FC<IProps> = ({
   return (
     <Box
       sx={{
-        border: 1,
+        // border: 1,
         borderRadius: '5px',
         height: '90px',
         width: '90px',
@@ -30,8 +30,10 @@ export const WeatherCard: React.FC<IProps> = ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '10px',
+        padding: '5px',
+        px: '10px',
         margin: '7px',
+        boxShadow: 2,
       }}
     >
       <Typography sx={{ fontSize: '12px' }}>{date}</Typography>

@@ -9,7 +9,7 @@ export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
 
 export const BaseButton = ({ children, ...props }: IButtonProps) => {
   return (
-    <Button variant={props.variant} sx={props.sx}>
+    <Button variant={props.variant} sx={props.sx} onClick={props.onClick}>
       {children}
     </Button>
   )
