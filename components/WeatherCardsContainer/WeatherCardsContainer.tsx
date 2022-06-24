@@ -1,6 +1,19 @@
 import { WeatherCard } from '../WeatherCard/WeatherCard'
 import Box from '@mui/material/Box'
 import CloudyDay1 from '../../assets/WeatherIcons/CloudyDay1.svg'
+import * as React from 'react'
+
+interface IProps {
+  sx: Record<string, unknown>
+  weatherAndFlight?: {
+    date: string
+    weatherImage: string
+    temperatureDay: number
+    temperatureNight: number
+    departurePrice: number
+    arrivalPrice: number
+  }[]
+}
 
 const weatherData = [
   {
@@ -66,17 +79,25 @@ const weatherData = [
     temperatureDay: 31,
     temperatureNight: 15,
   },
+  {
+    id: 9,
+    date: '08.03.2022',
+    weatherImage: CloudyDay1,
+    temperatureDay: 31,
+    temperatureNight: 15,
+  },
 ]
 
-export const WeatherCardsContainer = () => {
+export const WeatherCardsContainer = (props: IProps) => {
   return (
     <Box
       sx={{
         marginTop: '10px',
         display: 'flex',
         flexDirection: 'row',
-        overflowY: 'scroll',
+        // overflowY: 'scroll',
         justifyContent: 'space-between',
+        ...props.sx,
       }}
     >
       {weatherData.map((day) => {

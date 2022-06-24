@@ -11,7 +11,7 @@ export const Form = () => {
   return (
     <>
       <YourCityWeatherInput />
-      <WeatherCardsContainer />
+      <WeatherCardsContainer sx={{ overflowY: 'scroll' }} />
       <AirportCityInput />
       <TypographySlogan text={'Twoja wymarzona pogoda'} />
       <Box
