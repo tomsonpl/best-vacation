@@ -4,11 +4,14 @@ import Image from 'next/image'
 import * as React from 'react'
 
 interface IProps {
+  key: number
   borderColor?: string
   date: string
   weatherImage: string
   temperatureDay: number
   temperatureNight: number
+  departurePrice?: number
+  arrivalPrice?: number
 }
 
 export const WeatherCard: React.FC<IProps> = ({
@@ -17,6 +20,8 @@ export const WeatherCard: React.FC<IProps> = ({
   weatherImage,
   temperatureDay,
   temperatureNight,
+  departurePrice,
+  arrivalPrice,
 }) => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -50,17 +55,23 @@ export const WeatherCard: React.FC<IProps> = ({
           </Typography>
         </Box>
       </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <Typography sx={{ fontSize: '12px', color: 'red' }}>200 zł</Typography>
-        <Typography sx={{ fontSize: '12px', color: 'blue' }}>200 zł</Typography>
-      </Box>
+      {departurePrice ? (
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Typography sx={{ fontSize: '12px', color: 'red' }}>
+            {departurePrice} zł
+          </Typography>
+          <Typography sx={{ fontSize: '12px', color: 'blue' }}>
+            {arrivalPrice} zł
+          </Typography>
+        </Box>
+      ) : null}
     </Box>
   )
 }
