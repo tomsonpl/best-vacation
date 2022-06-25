@@ -6,7 +6,7 @@ interface IProps {
   title: string
 }
 
-export const WeatherButton = (props: IProps) => {
+export const WeatherButton = ({ icon }: IProps) => {
   return (
     <IconButton
       sx={{
@@ -22,7 +22,7 @@ export const WeatherButton = (props: IProps) => {
         boxShadow: 2,
       }}
     >
-      <Image layout={'fill'} src={props.icon} alt={'pogoda'} />
+      <Image layout={'fill'} src={icon} alt={'pogoda'} />
     </IconButton>
   )
 }
