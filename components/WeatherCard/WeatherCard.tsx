@@ -1,7 +1,7 @@
-import Box from '@mui/material/Box'
-import { Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import Image from 'next/image'
 import * as React from 'react'
+import { PriceButton } from '../Button/PriceButton'
 
 interface IProps {
   key: number
@@ -62,14 +62,20 @@ export const WeatherCard: React.FC<IProps> = ({
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
+            gap: '5px',
+            mb: '15px',
           }}
         >
-          <Typography sx={{ fontSize: '12px', color: 'red' }}>
-            {departurePrice} zł
-          </Typography>
-          <Typography sx={{ fontSize: '12px', color: 'blue' }}>
-            {arrivalPrice} zł
-          </Typography>
+          <PriceButton
+            color={'red'}
+            borderColor={'red'}
+            price={departurePrice}
+          />
+          <PriceButton
+            color={'blue'}
+            borderColor={'blue'}
+            price={arrivalPrice}
+          />
         </Box>
       ) : null}
     </Box>

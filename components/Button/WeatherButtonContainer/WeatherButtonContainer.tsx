@@ -13,7 +13,6 @@ import Snowy2 from '../../../assets/WeatherIcons/Snowy2.svg'
 import Snowy3 from '../../../assets/WeatherIcons/Snowy3.svg'
 import Snowy4 from '../../../assets/WeatherIcons/Snowy4.svg'
 import Snowy6 from '../../../assets/WeatherIcons/Snowy6.svg'
-
 import { WeatherButton } from './WeatherButton'
 import Box from '@mui/material/Box'
 
