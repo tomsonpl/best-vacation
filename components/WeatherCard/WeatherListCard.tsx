@@ -60,8 +60,12 @@ export const WeatherListCard: React.FC<IProps> = (props) => {
         <Typography sx={{ color: 'rgba(128, 128, 128, 1)', fontSize: '10px' }}>
           {temperatureNight} <span>&#8451;</span>
         </Typography>
-        <PriceButton color={'red'} borderColor={'red'} price={departurePrice} />
-        <PriceButton color={'blue'} borderColor={'blue'} price={arrivalPrice} />
+        <PriceButton
+          color={'blue'}
+          borderColor={'blue'}
+          price={departurePrice}
+        />
+        <PriceButton color={'red'} borderColor={'red'} price={arrivalPrice} />
       </Box>
     </Box>
   )

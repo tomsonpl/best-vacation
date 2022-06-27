@@ -67,15 +67,11 @@ export const WeatherCard: React.FC<IProps> = ({
           }}
         >
           <PriceButton
-            color={'red'}
-            borderColor={'red'}
-            price={departurePrice}
-          />
-          <PriceButton
             color={'blue'}
             borderColor={'blue'}
-            price={arrivalPrice}
+            price={departurePrice}
           />
+          <PriceButton color={'red'} borderColor={'red'} price={arrivalPrice} />
         </Box>
       ) : null}
     </Box>
