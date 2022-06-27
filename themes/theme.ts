@@ -5,6 +5,9 @@ export const theme = createTheme({
     h1: {
       fontSize: 15,
     },
+    h2: {
+      fontSize: 25,
+    },
     h5: {
       fontSize: 18,
     },
