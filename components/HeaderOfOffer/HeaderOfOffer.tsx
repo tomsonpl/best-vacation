@@ -17,6 +17,7 @@ export interface TravelOption {
 }
 
 interface IProps {
+  cityNumber: number
   key: number
   city: string
   country: string
@@ -45,15 +46,23 @@ export const HeaderOfOffer = (props: IProps) => {
       }}
     >
       <Typography variant={'h5'} sx={{ fontWeight: '600', mb: '5px' }}>
-        1. {props.city}, {props.country}
+        {props.cityNumber}. {props.city}, {props.country}
       </Typography>
       <Divider sx={{ mb: '10px' }} />
-      <Box>
+      <Box
+        sx={{
+          position: 'relative',
+          height: '300px',
+          width: 'auto',
+        }}
+      >
         <Image
           src={church_dome_malta}
           alt="Zdjęcie miasta"
-          height={200}
-          width={300}
+          layout={'fill'}
+          sizes={'100vw'}
+          style={{ objectFit: 'cover' }} // height={200}
+          // width={300}
         />
       </Box>
       <Divider sx={{ mt: '10px', mb: { xs: '10px', sm: 0 } }} />

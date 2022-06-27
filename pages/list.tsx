@@ -154,6 +154,7 @@ const List: NextPage = () => {
       {data.map((offer) => {
         return (
           <HeaderOfOffer
+            cityNumber={offer.id}
             key={offer.id}
             city={offer.city}
             country={offer.country}
