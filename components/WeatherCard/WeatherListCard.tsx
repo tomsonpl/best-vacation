@@ -2,18 +2,11 @@ import { Typography, Box } from '@mui/material'
 import Image from 'next/image'
 import * as React from 'react'
 import { PriceButton } from '../Button/PriceButton'
+import { TravelOption } from '../HeaderOfOffer/HeaderOfOffer'
 
 interface IProps {
   key: number
-  weatherAndFlight: {
-    // borderColor?: string
-    date: string
-    weatherImage: string
-    temperatureDay: number
-    temperatureNight: number
-    departurePrice: number
-    arrivalPrice: number
-  }
+  weatherAndFlight: TravelOption
 }
 
 export const WeatherListCard: React.FC<IProps> = (props) => {

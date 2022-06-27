@@ -1,24 +1,11 @@
 import { WeatherCard } from '../WeatherCard/WeatherCard'
 import Box from '@mui/material/Box'
 import * as React from 'react'
+import { TravelOption } from '../HeaderOfOffer/HeaderOfOffer'
 
 interface IProps {
   sx: Record<string, unknown>
-  weatherAndFlight?: {
-    date: string
-    weatherImage: string
-    temperatureDay: number
-    temperatureNight: number
-    departurePrice: number
-    arrivalPrice: number
-  }[]
-  weatherData?: {
-    borderColor?: string
-    date: string
-    weatherImage: string
-    temperatureDay: number
-    temperatureNight: number
-  }[]
+  weatherAndFlight: TravelOption[]
 }
 
 export const WeatherCardsContainer = (props: IProps) => {
@@ -33,31 +20,19 @@ export const WeatherCardsContainer = (props: IProps) => {
         ...props.sx,
       }}
     >
-      {props.weatherData
-        ? props.weatherData.map((day, id) => {
-            return (
-              <WeatherCard
-                key={id}
-                date={day.date}
-                weatherImage={day.weatherImage}
-                temperatureDay={day.temperatureDay}
-                temperatureNight={day.temperatureNight}
-              />
-            )
-          })
-        : props.weatherAndFlight?.map((day, id) => {
-            return (
-              <WeatherCard
-                key={id}
-                date={day.date}
-                weatherImage={day.weatherImage}
-                temperatureDay={day.temperatureDay}
-                temperatureNight={day.temperatureNight}
-                departurePrice={day.departurePrice}
-                arrivalPrice={day.arrivalPrice}
-              />
-            )
-          })}
+      {props.weatherAndFlight.map((day, id) => {
+        return (
+          <WeatherCard
+            key={id}
+            date={day.date}
+            weatherImage={day.weatherImage}
+            temperatureDay={day.temperatureDay}
+            temperatureNight={day.temperatureNight}
+            departurePrice={day.departurePrice}
+            arrivalPrice={day.arrivalPrice}
+          />
+        )
+      })}
     </Box>
   )
 }

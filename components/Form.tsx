@@ -86,7 +86,7 @@ export const Form = () => {
     <>
       <YourCityWeatherInput />
       <WeatherCardsContainer
-        weatherData={weatherData}
+        weatherAndFlight={weatherData}
         sx={{ overflowY: 'scroll' }}
       />
       <AirportCityInput />

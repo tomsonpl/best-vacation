@@ -2,23 +2,31 @@ import { Container, Typography, Divider } from '@mui/material'
 import { WeatherCardsContainer } from '../WeatherCardsContainer/WeatherCardsContainer'
 import { WeatherListCard } from '../WeatherCard/WeatherListCard'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import { useMemo } from 'react'
+
+export interface TravelOption {
+  date: string
+  weatherImage: string
+  temperatureDay: number
+  temperatureNight: number
+  departurePrice?: number
+  arrivalPrice?: number
+}
 
 interface IProps {
   key: number
   city: string
   country: string
-  weatherAndFlight: {
-    date: string
-    weatherImage: string
-    temperatureDay: number
-    temperatureNight: number
-    departurePrice: number
-    arrivalPrice: number
-  }[]
+  weatherAndFlight: TravelOption[]
 }
 
 export const HeaderOfOffer = (props: IProps) => {
   const matches = useMediaQuery('(min-width:700px)')
+  const renderWeatherList = useMemo(() => {
+    return props.weatherAndFlight.map((day) => {
+      return <WeatherListCard key={props.key} weatherAndFlight={day} />
+    })
+  }, [props.key, props.weatherAndFlight])
   return (
     <Container
       sx={{
@@ -46,9 +54,7 @@ export const HeaderOfOffer = (props: IProps) => {
           sx={{ flexWrap: 'wrap' }}
         />
       ) : (
-        props.weatherAndFlight.map((day) => {
-          return <WeatherListCard key={props.key} weatherAndFlight={day} />
-        })
+        renderWeatherList
       )}
     </Container>
   )
