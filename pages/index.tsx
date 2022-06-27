@@ -33,7 +33,7 @@ const Home: NextPage = () => {
             mt: { xs: '45%', sm: '25%', md: '18%', lg: '12%' },
             backgroundColor: 'white',
             width: '85%',
-            height: '70%',
+            height: 'auto',
             borderRadius: '10px',
             boxShadow: 3,
           }}
@@ -45,7 +45,7 @@ const Home: NextPage = () => {
               width: '100%',
               fontSize: '18px',
               backgroundColor: '#1976d2',
-              mt: '20px',
+              my: '20px',
             }}
             onClick={() => {
               router.push('/list')
