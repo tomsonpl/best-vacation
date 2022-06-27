@@ -2,6 +2,7 @@ import { Box, Typography } from '@mui/material'
 import Image from 'next/image'
 import * as React from 'react'
 import { PriceButton } from '../Button/PriceButton'
+import { TemperatureTypography } from '../Typography/TemperatureTypography'
 
 interface IProps {
   key: number
@@ -42,17 +43,14 @@ export const WeatherCard: React.FC<IProps> = ({
           boxShadow: 2,
         }}
       >
-        <Typography sx={{ fontSize: '12px' }}>{date}</Typography>
+        <Typography variant={'h6'}>{date}</Typography>
         <Image src={weatherImage} width={'50px'} height={'50px'} alt="pogoda" />
         <Box sx={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
-          <Typography sx={{ color: 'black', fontSize: '10px' }}>
-            {temperatureDay} <span>&#8451;</span>
-          </Typography>
-          <Typography
-            sx={{ color: 'rgba(128, 128, 128, 1)', fontSize: '10px' }}
-          >
-            {temperatureNight} <span>&#8451;</span>
-          </Typography>
+          <TemperatureTypography temperature={temperatureDay} color={'black'} />
+          <TemperatureTypography
+            temperature={temperatureNight}
+            color={'rgba(128, 128, 128, 1)'}
+          />
         </Box>
       </Box>
       {departurePrice ? (
