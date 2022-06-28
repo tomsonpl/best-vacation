@@ -23,11 +23,10 @@ export const Navbar: React.FC<IProps> = ({ text }) => {
           <Toolbar sx={{ paddingLeft: 0 }}>
             <Container sx={{ display: 'flex', alignItems: 'center' }}>
               <Typography
-                variant="h6"
+                variant="h1"
                 component="div"
                 noWrap
                 sx={{
-                  fontSize: '15px',
                   fontWeight: '700',
                   paddingLeft: '0px',
                   marginRight: '10px',

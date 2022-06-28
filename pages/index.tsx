@@ -42,10 +42,7 @@ const Home: NextPage = () => {
           <BaseButton
             variant={'contained'}
             sx={{
-              width: '100%',
-              fontSize: '18px',
               backgroundColor: '#1976d2',
-              my: '20px',
             }}
             onClick={() => {
               router.push('/list')

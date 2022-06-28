@@ -12,7 +12,6 @@ export const Slogan = () => {
       <Typography
         variant="h1"
         sx={{
-          fontSize: '15px',
           fontWeight: '600',
           color: 'white',
           mx: '20px',

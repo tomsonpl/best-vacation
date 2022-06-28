@@ -3,6 +3,7 @@ import Image from 'next/image'
 import * as React from 'react'
 import { PriceButton } from '../Button/PriceButton'
 import { TravelOption } from '../HeaderOfOffer/HeaderOfOffer'
+import { TemperatureTypography } from '../Typography/TemperatureTypography'
 
 interface IProps {
   key: number
@@ -37,7 +38,9 @@ export const WeatherListCard: React.FC<IProps> = (props) => {
         boxShadow: 2,
       }}
     >
-      <Typography sx={{ fontSize: '12px', mr: '10px' }}>{date}</Typography>
+      <Typography variant={'h6'} sx={{ mr: '10px' }}>
+        {date}
+      </Typography>
       <Image src={weatherImage} width={'50px'} height={'50px'} alt="pogoda" />
       <Box
         sx={{
@@ -47,12 +50,11 @@ export const WeatherListCard: React.FC<IProps> = (props) => {
           gap: '10px',
         }}
       >
-        <Typography sx={{ color: 'black', fontSize: '10px' }}>
-          {temperatureDay} <span>&#8451;</span>
-        </Typography>
-        <Typography sx={{ color: 'rgba(128, 128, 128, 1)', fontSize: '10px' }}>
-          {temperatureNight} <span>&#8451;</span>
-        </Typography>
+        <TemperatureTypography temperature={temperatureDay} color={'black'} />
+        <TemperatureTypography
+          temperature={temperatureNight}
+          color={'rgba(128, 128, 128, 1)'}
+        />
         <PriceButton
           color={'blue'}
           borderColor={'blue'}

@@ -4,7 +4,7 @@ interface IProps {
 }
 export const TypographySlogan = (props: IProps) => {
   return (
-    <Typography variant={'h6'} sx={{ mt: 2, fontWeight: 700 }}>
+    <Typography variant="h2" align={'center'} sx={{ my: 2, fontWeight: 700 }}>
       {props.text}
     </Typography>
   )

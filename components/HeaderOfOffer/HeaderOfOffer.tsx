@@ -1,8 +1,11 @@
-import { Container, Typography, Divider } from '@mui/material'
+import { Container, Typography, Divider, Box } from '@mui/material'
 import { WeatherCardsContainer } from '../WeatherCardsContainer/WeatherCardsContainer'
 import { WeatherListCard } from '../WeatherCard/WeatherListCard'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useMemo } from 'react'
+import Image from 'next/image'
+import church_dome_malta from '../../assets/PhotosOfCities/churchDomeMalta.jpg'
+import { SelectedDateAndPriceContainer } from '../SelectedDateAndPriceContainer/SelectedDateAndPriceContainer'
 
 export interface TravelOption {
   date: string
@@ -14,6 +17,7 @@ export interface TravelOption {
 }
 
 interface IProps {
+  cityNumber: number
   key: number
   city: string
   country: string
@@ -37,15 +41,32 @@ export const HeaderOfOffer = (props: IProps) => {
         // height: 'auto',
         borderRadius: '10px',
         boxShadow: 3,
-        mb: '15px',
+        py: '15px',
+        mb: '30px',
       }}
     >
-      <Typography>
-        {props.key}
-        {props.city},{props.country}
+      <Typography variant={'h5'} sx={{ fontWeight: '600', mb: '5px' }}>
+        {props.cityNumber}. {props.city}, {props.country}
       </Typography>
-      <Divider />
-      <Typography>ble</Typography>
+      <Divider sx={{ mb: '10px' }} />
+      <Box
+        sx={{
+          position: 'relative',
+          height: '300px',
+          width: 'auto',
+        }}
+      >
+        <Image
+          src={church_dome_malta}
+          alt="Zdjęcie miasta"
+          layout={'fill'}
+          sizes={'100vw'}
+          style={{ objectFit: 'cover' }} // height={200}
+          // width={300}
+        />
+      </Box>
+      <Divider sx={{ mt: '10px', mb: { xs: '10px', sm: 0 } }} />
+      <SelectedDateAndPriceContainer />
       <Divider />
       {matches ? (
         <WeatherCardsContainer
