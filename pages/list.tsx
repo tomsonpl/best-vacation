@@ -1,11 +1,13 @@
 import { NextPage } from 'next'
-import { Container } from '@mui/material'
+import { Container, Divider, Modal } from '@mui/material'
 // import { TypographySlogan } from '../components/Typography/TypographySlogan'
 import { HeaderOfOffer } from '../components/HeaderOfOffer/HeaderOfOffer'
 import CloudyDay1 from '../assets/WeatherIcons/CloudyDay1.svg'
-import { Form } from '../components/Form'
 import * as React from 'react'
 import { BaseButton } from '../components/Button/Button'
+import { SelectedOptionsContainer } from '../components/SelectedOptionsContainer/SelectedOptionsContainer'
+import { ShortenedForm } from '../components/ShortenedForm'
+import { useState } from 'react'
 
 const data = [
   {
@@ -187,29 +189,29 @@ const data = [
 ]
 
 const List: NextPage = () => {
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
   return (
     <Container sx={{ mt: '80px' }}>
-      <Container
+      <SelectedOptionsContainer />
+      <BaseButton
+        variant={'text'}
         sx={{
-          my: '20px',
-          backgroundColor: 'white',
-          width: '90%',
-          height: 'auto',
-          borderRadius: '10px',
-          boxShadow: 3,
-          pt: '1px',
+          color: '#1976d2',
+          my: '0',
+          textTransform: 'lowerCase',
+          fontSize: '15px',
         }}
+        onClick={handleOpen}
       >
-        <Form showYourCityWeather={false} />
-        <BaseButton
-          variant={'contained'}
-          sx={{
-            backgroundColor: '#1976d2',
-          }}
-        >
-          Szukaj
-        </BaseButton>
-      </Container>
+        Zmień
+      </BaseButton>
+      <Divider sx={{ mb: '20px' }} />
+      <Modal open={open}>
+        <ShortenedForm onClose={handleClose} />
+      </Modal>
+
       {/*<TypographySlogan text={'Odpowiednie dla Ciebie'} />*/}
       {data.map((offer) => {
         return (

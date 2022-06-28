@@ -3,7 +3,7 @@ import { Button } from '@mui/material'
 
 export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode
-  variant: 'outlined' | 'contained'
+  variant: 'outlined' | 'contained' | 'text'
   sx: Record<string, unknown>
 }
 

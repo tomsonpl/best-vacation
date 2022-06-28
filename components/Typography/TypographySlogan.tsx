@@ -7,7 +7,7 @@ export const TypographySlogan = (props: IProps) => {
     <Typography
       variant="h5"
       align={'center'}
-      sx={{ my: 2, fontWeight: 700, fontSize: { sm: '25px' } }}
+      sx={{ mt: 2, fontWeight: 700, fontSize: { sm: '25px' } }}
     >
       {props.text}
     </Typography>
