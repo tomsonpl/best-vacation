@@ -4,8 +4,9 @@ import { WeatherListCard } from '../WeatherCard/WeatherListCard'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useMemo } from 'react'
 import Image from 'next/image'
-import church_dome_malta from '../../assets/PhotosOfCities/churchDomeMalta.jpg'
+// import church_dome_malta from '../../assets/PhotosOfCities/churchDomeMalta.jpg'
 import { SelectedDateAndPriceContainer } from '../SelectedDateAndPriceContainer/SelectedDateAndPriceContainer'
+import cartagenaSpainLandscape from '../../assets/PhotosOfCities/cartagenaSpainLandscape.jpg'
 
 export interface TravelOption {
   date: string
@@ -57,7 +58,7 @@ export const HeaderOfOffer = (props: IProps) => {
         }}
       >
         <Image
-          src={church_dome_malta}
+          src={cartagenaSpainLandscape}
           alt="Zdjęcie miasta"
           layout={'fill'}
           // sizes={'100vw'}
