@@ -52,7 +52,7 @@ export const HeaderOfOffer = (props: IProps) => {
       <Box
         sx={{
           position: 'relative',
-          height: '300px',
+          height: '200px',
           width: 'auto',
         }}
       >
@@ -60,8 +60,10 @@ export const HeaderOfOffer = (props: IProps) => {
           src={church_dome_malta}
           alt="Zdjęcie miasta"
           layout={'fill'}
-          sizes={'100vw'}
-          style={{ objectFit: 'cover' }} // height={200}
+          // sizes={'100vw'}
+          objectFit="cover"
+          quality={100}
+          // height={200}
           // width={300}
         />
       </Box>

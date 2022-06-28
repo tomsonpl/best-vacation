@@ -211,7 +211,6 @@ const List: NextPage = () => {
       <Modal open={open}>
         <ShortenedForm onClose={handleClose} />
       </Modal>
-
       {/*<TypographySlogan text={'Odpowiednie dla Ciebie'} />*/}
       {data.map((offer) => {
         return (
