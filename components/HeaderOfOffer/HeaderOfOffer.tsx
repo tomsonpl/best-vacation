@@ -25,7 +25,7 @@ interface IProps {
 }
 
 export const HeaderOfOffer = (props: IProps) => {
-  const matches = useMediaQuery('(min-width:700px)')
+  const matches = useMediaQuery('(min-width:930px)')
   const renderWeatherList = useMemo(() => {
     return props.weatherAndFlight.map((day) => {
       return <WeatherListCard key={props.key} weatherAndFlight={day} />
@@ -45,7 +45,7 @@ export const HeaderOfOffer = (props: IProps) => {
         mb: '30px',
       }}
     >
-      <Typography variant={'h5'} sx={{ fontWeight: '600', mb: '5px' }}>
+      <Typography variant={'h5'} sx={{ mb: '5px' }}>
         {props.cityNumber}. {props.city}, {props.country}
       </Typography>
       <Divider sx={{ mb: '10px' }} />

@@ -1,8 +1,11 @@
 import { NextPage } from 'next'
 import { Container } from '@mui/material'
-import { TypographySlogan } from '../components/Typography/TypographySlogan'
+// import { TypographySlogan } from '../components/Typography/TypographySlogan'
 import { HeaderOfOffer } from '../components/HeaderOfOffer/HeaderOfOffer'
 import CloudyDay1 from '../assets/WeatherIcons/CloudyDay1.svg'
+import { Form } from '../components/Form'
+import * as React from 'react'
+import { BaseButton } from '../components/Button/Button'
 
 const data = [
   {
@@ -100,6 +103,42 @@ const data = [
         departurePrice: 300,
         arrivalPrice: 400,
       },
+      {
+        id: 11,
+        date: '02.03.2022',
+        weatherImage: CloudyDay1,
+        temperatureDay: 31,
+        temperatureNight: 10,
+        departurePrice: 300,
+        arrivalPrice: 400,
+      },
+      {
+        id: 12,
+        date: '01.03.2022',
+        weatherImage: CloudyDay1,
+        temperatureDay: 27,
+        temperatureNight: 12,
+        departurePrice: 300,
+        arrivalPrice: 400,
+      },
+      {
+        id: 13,
+        date: '02.03.2022',
+        weatherImage: CloudyDay1,
+        temperatureDay: 31,
+        temperatureNight: 10,
+        departurePrice: 300,
+        arrivalPrice: 400,
+      },
+      {
+        id: 14,
+        date: '01.03.2022',
+        weatherImage: CloudyDay1,
+        temperatureDay: 27,
+        temperatureNight: 12,
+        departurePrice: 300,
+        arrivalPrice: 400,
+      },
     ],
   },
   {
@@ -150,7 +189,28 @@ const data = [
 const List: NextPage = () => {
   return (
     <Container sx={{ mt: '80px' }}>
-      <TypographySlogan text={'Odpowiednie dla Ciebie'} />
+      <Container
+        sx={{
+          my: '20px',
+          backgroundColor: 'white',
+          width: '90%',
+          height: 'auto',
+          borderRadius: '10px',
+          boxShadow: 3,
+          pt: '1px',
+        }}
+      >
+        <Form showYourCityWeather={false} />
+        <BaseButton
+          variant={'contained'}
+          sx={{
+            backgroundColor: '#1976d2',
+          }}
+        >
+          Szukaj
+        </BaseButton>
+      </Container>
+      {/*<TypographySlogan text={'Odpowiednie dla Ciebie'} />*/}
       {data.map((offer) => {
         return (
           <HeaderOfOffer
