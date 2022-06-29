@@ -1,6 +1,5 @@
 import { NextPage } from 'next'
-import { Container, Divider, Modal } from '@mui/material'
-// import { TypographySlogan } from '../components/Typography/TypographySlogan'
+import { Box, Container, Divider, Modal } from '@mui/material'
 import { HeaderOfOffer } from '../components/HeaderOfOffer/HeaderOfOffer'
 import CloudyDay1 from '../assets/WeatherIcons/CloudyDay1.svg'
 import * as React from 'react'
@@ -8,6 +7,7 @@ import { BaseButton } from '../components/Button/Button'
 import { SelectedOptionsContainer } from '../components/SelectedOptionsContainer/SelectedOptionsContainer'
 import { ShortenedForm } from '../components/ShortenedForm'
 import { useState } from 'react'
+import { Slogan } from '../components/Slogan'
 
 const data = [
   {
@@ -211,7 +211,11 @@ const List: NextPage = () => {
       <Modal open={open}>
         <ShortenedForm onClose={handleClose} />
       </Modal>
-      {/*<TypographySlogan text={'Odpowiednie dla Ciebie'} />*/}
+      <Box sx={{ mt: '10%' }}>
+        <Slogan>Brak wyników spełniających powyższe kryteria.</Slogan>
+        <Slogan>Zmień kryteria wyszukiwania.</Slogan>
+      </Box>
+
       {data.map((offer) => {
         return (
           <HeaderOfOffer
