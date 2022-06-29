@@ -30,7 +30,8 @@ const Home: NextPage = () => {
         <Container
           sx={{
             position: 'absolute',
-            mt: { xs: '45%', sm: '25%', md: '18%', lg: '12%' },
+            // mt: { xs: '45%', sm: '25%', md: '18%', lg: '12%' }, when there is a slogan
+            mt: '100px',
             backgroundColor: 'white',
             width: '85%',
             height: 'auto',
@@ -38,7 +39,7 @@ const Home: NextPage = () => {
             boxShadow: 3,
           }}
         >
-          <Form />
+          <Form showYourCityWeather={true} />
           <BaseButton
             variant={'contained'}
             sx={{

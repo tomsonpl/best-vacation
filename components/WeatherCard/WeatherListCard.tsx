@@ -34,6 +34,7 @@ export const WeatherListCard: React.FC<IProps> = (props) => {
         justifyContent: 'center',
         padding: '5px',
         // px: '10px',
+        gap: { xs: 0, sm: '15px' },
         my: '10px',
         boxShadow: 2,
       }}
@@ -47,7 +48,7 @@ export const WeatherListCard: React.FC<IProps> = (props) => {
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
-          gap: '10px',
+          gap: { xs: '10px', sm: '15px' },
         }}
       >
         <TemperatureTypography temperature={temperatureDay} color={'black'} />

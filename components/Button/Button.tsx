@@ -1,9 +1,8 @@
-import React, { HTMLAttributes, ReactNode } from 'react'
-import { Button } from '@mui/material'
+import React, { ReactNode } from 'react'
+import { Button, ButtonProps } from '@mui/material'
 
-export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps extends ButtonProps {
   children: ReactNode
-  variant: 'outlined' | 'contained'
   sx: Record<string, unknown>
 }
 

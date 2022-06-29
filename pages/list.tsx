@@ -1,8 +1,13 @@
 import { NextPage } from 'next'
-import { Container } from '@mui/material'
-import { TypographySlogan } from '../components/Typography/TypographySlogan'
+import { Container, Divider, Modal } from '@mui/material'
+// import { TypographySlogan } from '../components/Typography/TypographySlogan'
 import { HeaderOfOffer } from '../components/HeaderOfOffer/HeaderOfOffer'
 import CloudyDay1 from '../assets/WeatherIcons/CloudyDay1.svg'
+import * as React from 'react'
+import { BaseButton } from '../components/Button/Button'
+import { SelectedOptionsContainer } from '../components/SelectedOptionsContainer/SelectedOptionsContainer'
+import { ShortenedForm } from '../components/ShortenedForm'
+import { useState } from 'react'
 
 const data = [
   {
@@ -100,6 +105,42 @@ const data = [
         departurePrice: 300,
         arrivalPrice: 400,
       },
+      {
+        id: 11,
+        date: '02.03.2022',
+        weatherImage: CloudyDay1,
+        temperatureDay: 31,
+        temperatureNight: 10,
+        departurePrice: 300,
+        arrivalPrice: 400,
+      },
+      {
+        id: 12,
+        date: '01.03.2022',
+        weatherImage: CloudyDay1,
+        temperatureDay: 27,
+        temperatureNight: 12,
+        departurePrice: 300,
+        arrivalPrice: 400,
+      },
+      {
+        id: 13,
+        date: '02.03.2022',
+        weatherImage: CloudyDay1,
+        temperatureDay: 31,
+        temperatureNight: 10,
+        departurePrice: 300,
+        arrivalPrice: 400,
+      },
+      {
+        id: 14,
+        date: '01.03.2022',
+        weatherImage: CloudyDay1,
+        temperatureDay: 27,
+        temperatureNight: 12,
+        departurePrice: 300,
+        arrivalPrice: 400,
+      },
     ],
   },
   {
@@ -148,9 +189,29 @@ const data = [
 ]
 
 const List: NextPage = () => {
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
   return (
     <Container sx={{ mt: '80px' }}>
-      <TypographySlogan text={'Odpowiednie dla Ciebie'} />
+      <SelectedOptionsContainer />
+      <BaseButton
+        variant={'text'}
+        sx={{
+          color: '#1976d2',
+          my: '0',
+          textTransform: 'lowerCase',
+          fontSize: '15px',
+        }}
+        onClick={handleOpen}
+      >
+        Zmień
+      </BaseButton>
+      <Divider sx={{ mb: '20px' }} />
+      <Modal open={open}>
+        <ShortenedForm onClose={handleClose} />
+      </Modal>
+      {/*<TypographySlogan text={'Odpowiednie dla Ciebie'} />*/}
       {data.map((offer) => {
         return (
           <HeaderOfOffer

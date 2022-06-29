@@ -25,7 +25,14 @@ export const WeatherCard: React.FC<IProps> = ({
   arrivalPrice,
 }) => {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        flex: '14%',
+      }}
+    >
       <Box
         sx={{
           // border: 1,
@@ -38,7 +45,6 @@ export const WeatherCard: React.FC<IProps> = ({
           alignItems: 'center',
           justifyContent: 'center',
           padding: '5px',
-          px: '10px',
           margin: '7px',
           boxShadow: 2,
         }}

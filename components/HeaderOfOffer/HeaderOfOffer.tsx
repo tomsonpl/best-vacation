@@ -4,8 +4,9 @@ import { WeatherListCard } from '../WeatherCard/WeatherListCard'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useMemo } from 'react'
 import Image from 'next/image'
-import church_dome_malta from '../../assets/PhotosOfCities/churchDomeMalta.jpg'
+// import church_dome_malta from '../../assets/PhotosOfCities/churchDomeMalta.jpg'
 import { SelectedDateAndPriceContainer } from '../SelectedDateAndPriceContainer/SelectedDateAndPriceContainer'
+import cartagenaSpainLandscape from '../../assets/PhotosOfCities/cartagenaSpainLandscape.jpg'
 
 export interface TravelOption {
   date: string
@@ -25,7 +26,7 @@ interface IProps {
 }
 
 export const HeaderOfOffer = (props: IProps) => {
-  const matches = useMediaQuery('(min-width:700px)')
+  const matches = useMediaQuery('(min-width:930px)')
   const renderWeatherList = useMemo(() => {
     return props.weatherAndFlight.map((day) => {
       return <WeatherListCard key={props.key} weatherAndFlight={day} />
@@ -45,23 +46,25 @@ export const HeaderOfOffer = (props: IProps) => {
         mb: '30px',
       }}
     >
-      <Typography variant={'h5'} sx={{ fontWeight: '600', mb: '5px' }}>
+      <Typography variant={'h5'} sx={{ mb: '5px' }}>
         {props.cityNumber}. {props.city}, {props.country}
       </Typography>
       <Divider sx={{ mb: '10px' }} />
       <Box
         sx={{
           position: 'relative',
-          height: '300px',
+          height: '200px',
           width: 'auto',
         }}
       >
         <Image
-          src={church_dome_malta}
+          src={cartagenaSpainLandscape}
           alt="Zdjęcie miasta"
           layout={'fill'}
-          sizes={'100vw'}
-          style={{ objectFit: 'cover' }} // height={200}
+          // sizes={'100vw'}
+          objectFit="cover"
+          quality={100}
+          // height={200}
           // width={300}
         />
       </Box>

@@ -8,6 +8,9 @@ import { WeatherButtonContainer } from './Button/WeatherButtonContainer/WeatherB
 import * as React from 'react'
 import CloudyDay1 from '../assets/WeatherIcons/CloudyDay1.svg'
 
+interface IProps {
+  showYourCityWeather: boolean
+}
 const weatherData = [
   {
     id: 1,
@@ -81,14 +84,18 @@ const weatherData = [
   },
 ]
 
-export const Form = () => {
+export const Form = ({ showYourCityWeather }: IProps) => {
   return (
-    <>
-      <YourCityWeatherInput />
-      <WeatherCardsContainer
-        weatherAndFlight={weatherData}
-        sx={{ overflowY: 'scroll' }}
-      />
+    <Box>
+      {showYourCityWeather && (
+        <>
+          <YourCityWeatherInput />
+          <WeatherCardsContainer
+            weatherAndFlight={weatherData}
+            sx={{ overflowY: 'scroll' }}
+          />
+        </>
+      )}
       <AirportCityInput />
       <TypographySlogan text={'Twoja wymarzona pogoda'} />
       <Box
@@ -104,6 +111,6 @@ export const Form = () => {
         <Typography>&#8451;</Typography>
       </Box>
       <WeatherButtonContainer />
-    </>
+    </Box>
   )
 }
