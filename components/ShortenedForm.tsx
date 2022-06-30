@@ -1,5 +1,4 @@
-import { Form } from './Form'
-import { BaseButton } from './Button/Button'
+import { SearchForm } from './SearchForm'
 import { Box, Container } from '@mui/material'
 import * as React from 'react'
 import { ClosingButton } from './Button/ClosingButton'
@@ -32,15 +31,7 @@ export const ShortenedForm = (props: IProps) => {
         <TypographySlogan text={'Zmień wyszukiwanie'} />
         <ClosingButton onClose={props.onClose} />
       </Box>
-      <Form showYourCityWeather={false} />
-      <BaseButton
-        variant={'contained'}
-        sx={{
-          backgroundColor: '#1976d2',
-        }}
-      >
-        Szukaj
-      </BaseButton>
+      <SearchForm showYourCityWeather={false} />
     </Container>
   )
 }

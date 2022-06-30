@@ -4,11 +4,21 @@ import * as React from 'react'
 import { TypographySlogan } from '../Typography/TypographySlogan'
 import { WeatherButtonContainer } from '../Button/WeatherButtonContainer/WeatherButtonContainer'
 
-export const SelectedOptionsContainer = () => {
+interface IProps {
+  query: {
+    yourCity: string
+    airportCity: string
+    minTemperature: string
+    maxTemperature: string
+    perfectWeather: string
+  }
+}
+
+export const SelectedOptionsContainer = (props: IProps) => {
   return (
     <Box>
       <Typography variant={'h1'} align={'center'}>
-        Wylot z: Warszawa
+        Wylot z: {props.query.airportCity}
       </Typography>
       <TypographySlogan text={'Twoja wymarzona pogoda'} />
       <Typography
@@ -16,9 +26,10 @@ export const SelectedOptionsContainer = () => {
         variant={'subtitle1'}
         sx={{ color: 'black', fontSize: '15px' }}
       >
-        20 <span>&#8451;</span> - 20 <span>&#8451;</span>
+        {props.query.minTemperature}
+        <span>&#8451;</span> - {props.query.maxTemperature} <span>&#8451;</span>
       </Typography>
-      <WeatherButtonContainer />
+      <WeatherButtonContainer activeIds={[1, 2, 3]} onClick={() => null} />
       {/*<TemperatureTypography temperature={temperatureDay} color={'black'} />*/}
       {/*<TemperatureTypography*/}
       {/*  temperature={temperatureNight}*/}

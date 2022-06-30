@@ -95,7 +95,12 @@ const options = [
   },
 ]
 
-export const WeatherButtonContainer = () => {
+interface IProps {
+  activeIds: number[]
+  onClick: (id: number) => void
+}
+
+export const WeatherButtonContainer = ({ activeIds, onClick }: IProps) => {
   return (
     <Box
       sx={{
@@ -107,11 +112,14 @@ export const WeatherButtonContainer = () => {
       }}
     >
       {options.map((option) => {
+        const isActive = activeIds.includes(option.id)
         return (
           <WeatherButton
+            onClick={() => onClick(option.id)}
             key={option.id}
             icon={option.icon}
             title={option.title}
+            isActive={isActive}
           />
         )
       })}

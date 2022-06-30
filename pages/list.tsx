@@ -1,6 +1,5 @@
 import { NextPage } from 'next'
 import { Container, Divider, Modal } from '@mui/material'
-// import { TypographySlogan } from '../components/Typography/TypographySlogan'
 import { HeaderOfOffer } from '../components/HeaderOfOffer/HeaderOfOffer'
 import CloudyDay1 from '../assets/WeatherIcons/CloudyDay1.svg'
 import * as React from 'react'
@@ -8,6 +7,8 @@ import { BaseButton } from '../components/Button/Button'
 import { SelectedOptionsContainer } from '../components/SelectedOptionsContainer/SelectedOptionsContainer'
 import { ShortenedForm } from '../components/ShortenedForm'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
+// import { Slogan } from '../components/Slogan'
 
 const data = [
   {
@@ -189,12 +190,15 @@ const data = [
 ]
 
 const List: NextPage = () => {
+  const router = useRouter()
+  const { query } = router
+  console.log({ query })
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   return (
     <Container sx={{ mt: '80px' }}>
-      <SelectedOptionsContainer />
+      <SelectedOptionsContainer query={query} />
       <BaseButton
         variant={'text'}
         sx={{
@@ -211,7 +215,10 @@ const List: NextPage = () => {
       <Modal open={open}>
         <ShortenedForm onClose={handleClose} />
       </Modal>
-      {/*<TypographySlogan text={'Odpowiednie dla Ciebie'} />*/}
+      {/*<Box sx={{ mt: '10%' }}>*/}
+      {/*  <Slogan>Brak wyników spełniających powyższe kryteria.</Slogan>*/}
+      {/*  <Slogan>Zmień kryteria wyszukiwania.</Slogan>*/}
+      {/*</Box>*/}
       {data.map((offer) => {
         return (
           <HeaderOfOffer

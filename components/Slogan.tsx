@@ -1,32 +1,29 @@
-import { Typography, Container } from '@mui/material'
+import { Typography } from '@mui/material'
+import { ReactNode } from 'react'
 
-export const Slogan = () => {
+interface IProps {
+  children: ReactNode
+}
+
+export const Slogan = ({ children }: IProps) => {
   return (
-    <Container
+    <Typography
+      variant="h1"
       sx={{
-        position: 'absolute',
-        backgroundColor: 'red',
-        marginTop: '80px',
+        fontWeight: '600',
+        lineHeight: 2,
+        py: '10px',
+        display: 'flex',
+        justifyContent: 'center',
+        textAlign: 'center',
+        '@media (min-width: 768px)': {
+          fontSize: '20px',
+        },
       }}
     >
-      <Typography
-        variant="h1"
-        sx={{
-          fontWeight: '600',
-          color: 'white',
-          mx: '20px',
-          py: '10px',
-          display: 'flex',
-          justifyContent: 'center',
-          textAlign: 'center',
-          '@media (min-width: 768px)': {
-            fontSize: '20px',
-          },
-        }}
-      >
-        Znajdź tanie loty w wymarzonej dla Ciebie pogodzie w przeciągu
-        najbliższych 14 dni!
-      </Typography>
-    </Container>
+      {children}
+      {/*Znajdź tanie loty w wymarzonej dla Ciebie pogodzie w przeciągu*/}
+      {/*najbliższych 14 dni!*/}
+    </Typography>
   )
 }

@@ -10,11 +10,13 @@ import {
 import MenuIcon from '@mui/icons-material/Menu'
 import NavSunnyIcon from '../../assets/NavSunnyIcon.svg'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 interface IProps {
   text: string
 }
 export const Navbar: React.FC<IProps> = ({ text }) => {
+  const router = useRouter()
   return (
     <>
       <CssBaseline />
@@ -30,6 +32,10 @@ export const Navbar: React.FC<IProps> = ({ text }) => {
                   fontWeight: '700',
                   paddingLeft: '0px',
                   marginRight: '10px',
+                  cursor: 'pointer',
+                }}
+                onClick={() => {
+                  router.push('/')
                 }}
               >
                 {text}
@@ -39,6 +45,9 @@ export const Navbar: React.FC<IProps> = ({ text }) => {
                 width={30}
                 height={40}
                 alt="logo firmy Pogoda na tanie wakacje"
+                onClick={() => {
+                  router.push('/')
+                }}
               />
             </Container>
             <IconButton edge="end" color="inherit" aria-label="menu">
