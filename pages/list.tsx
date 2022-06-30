@@ -7,6 +7,7 @@ import { BaseButton } from '../components/Button/Button'
 import { SelectedOptionsContainer } from '../components/SelectedOptionsContainer/SelectedOptionsContainer'
 import { ShortenedForm } from '../components/ShortenedForm'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 // import { Slogan } from '../components/Slogan'
 
 const data = [
@@ -189,12 +190,15 @@ const data = [
 ]
 
 const List: NextPage = () => {
+  const router = useRouter()
+  const { query } = router
+  console.log({ query })
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   return (
     <Container sx={{ mt: '80px' }}>
-      <SelectedOptionsContainer />
+      <SelectedOptionsContainer query={query} />
       <BaseButton
         variant={'text'}
         sx={{

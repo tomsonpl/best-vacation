@@ -4,25 +4,31 @@ import Image from 'next/image'
 interface IProps {
   icon: string
   title: string
+  onClick: () => void
+  isActive: boolean
 }
 
-export const WeatherButton = ({ icon }: IProps) => {
+export const WeatherButton = ({ icon, onClick, isActive }: IProps) => {
   return (
-    <IconButton
-      sx={{
-        // border: 1,
-        borderRadius: '5px',
-        height: '60px',
-        width: '60px',
-        // borderColor: borderColor,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        margin: '7px',
-        boxShadow: 2,
-      }}
-    >
-      <Image layout={'fill'} src={icon} alt={'pogoda'} />
-    </IconButton>
+    <>
+      <IconButton
+        onClick={onClick}
+        sx={{
+          border: isActive ? 2 : 0,
+          borderColor: isActive ? '#1976d2' : null,
+          borderRadius: '5px',
+          height: '60px',
+          width: '60px',
+          // borderColor: borderColor,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          margin: '7px',
+          boxShadow: 2,
+        }}
+      >
+        <Image layout={'fill'} src={icon} alt={'pogoda'} />
+      </IconButton>
+    </>
   )
 }

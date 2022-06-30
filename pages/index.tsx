@@ -2,14 +2,10 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Box, Container } from '@mui/material'
 import beach from '../assets/beach.jpg'
-import { BaseButton } from '../components/Button/Button'
 import * as React from 'react'
-import { useRouter } from 'next/router'
-import { Form } from '../components/Form'
+import { SearchForm } from '../components/SearchForm'
 
 const Home: NextPage = () => {
-  const router = useRouter()
-
   return (
     <>
       <Head>
@@ -17,7 +13,7 @@ const Home: NextPage = () => {
       </Head>
       <Box
         sx={{
-          height: 800,
+          height: 750,
           backgroundImage: `url(${beach.src})`,
           backgroundSize: 'cover',
           position: 'relative',
@@ -39,18 +35,7 @@ const Home: NextPage = () => {
             boxShadow: 3,
           }}
         >
-          <Form showYourCityWeather={true} />
-          <BaseButton
-            variant={'contained'}
-            sx={{
-              backgroundColor: '#1976d2',
-            }}
-            onClick={() => {
-              router.push('/list')
-            }}
-          >
-            Szukaj
-          </BaseButton>
+          <SearchForm showYourCityWeather={true} />
         </Container>
       </Box>
     </>

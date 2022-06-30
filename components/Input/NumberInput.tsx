@@ -7,13 +7,11 @@ interface IProps {
 export const NumberInput = (props: IProps) => {
   return (
     <TextField
+      {...props}
       type="number"
-      name="paid"
       label={props.label}
-      variant="outlined"
       defaultValue={props.defaultValue}
       sx={{ width: '100px' }}
-      // onChange={event => handleChangeInput(inputField.id, event)}
     />
   )
 }

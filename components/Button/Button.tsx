@@ -9,6 +9,7 @@ export interface IButtonProps extends ButtonProps {
 export const BaseButton = ({ children, ...props }: IButtonProps) => {
   return (
     <Button
+      {...props}
       variant={props.variant}
       sx={{
         letterSpacing: 2,
