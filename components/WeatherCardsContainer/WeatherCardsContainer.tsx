@@ -1,7 +1,7 @@
 import { WeatherCard } from '../WeatherCard/WeatherCard'
 import Box from '@mui/material/Box'
 import * as React from 'react'
-import { TravelOption } from '../HeaderOfOffer/HeaderOfOffer'
+import { TravelOption } from '../CountryResultList/CountryResultList'
 
 interface IProps {
   sx: Record<string, unknown>

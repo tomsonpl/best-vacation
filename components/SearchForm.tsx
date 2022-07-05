@@ -182,7 +182,7 @@ export const SearchForm = ({ showYourCityWeather }: IProps) => {
             )
           }}
         />
-        <TypographySlogan text={'Twoja wymarzona pogoda'} />
+        <TypographySlogan align={'center'} text={'Twoja wymarzona pogoda'} />
         <Box
           sx={{
             mt: '20px',

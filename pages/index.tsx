@@ -4,6 +4,9 @@ import { Box, Container } from '@mui/material'
 import beach from '../assets/beach.jpg'
 import * as React from 'react'
 import { SearchForm } from '../components/SearchForm'
+import { data } from '../mocs/data'
+import { CountryResultList } from '../components/CountryResultList/CountryResultList'
+import { TypographySlogan } from '../components/Typography/TypographySlogan'
 
 const Home: NextPage = () => {
   return (
@@ -22,7 +25,6 @@ const Home: NextPage = () => {
           textAlign: 'center',
         }}
       >
-        {/*<Slogan />*/}
         <Container
           sx={{
             position: 'absolute',
@@ -37,6 +39,26 @@ const Home: NextPage = () => {
         >
           <SearchForm showYourCityWeather={true} />
         </Container>
+      </Box>
+      <TypographySlogan
+        text={'Proponowane'}
+        align={'left'}
+        sx={{ ml: '40px' }}
+      />
+      <Box sx={{ mt: '20px' }}>
+        {data.map((offer) => {
+          console.log({ offer })
+          return (
+            <CountryResultList
+              cityNumber={offer.id}
+              key={offer.id}
+              city={offer.city}
+              country={offer.country}
+              weatherAndFlight={offer.weatherAndFlight}
+              defaultItemsToShow={5}
+            />
+          )
+        })}
       </Box>
     </>
   )

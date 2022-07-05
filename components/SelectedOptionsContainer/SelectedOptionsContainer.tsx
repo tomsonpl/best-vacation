@@ -6,11 +6,11 @@ import { WeatherButtonContainer } from '../Button/WeatherButtonContainer/Weather
 
 interface IProps {
   query: {
-    yourCity: string
-    airportCity: string
-    minTemperature: string
-    maxTemperature: string
-    perfectWeather: string
+    yourCity?: string
+    airportCity?: string
+    minTemperature?: string
+    maxTemperature?: string
+    perfectWeather?: string
   }
 }
 
@@ -20,7 +20,7 @@ export const SelectedOptionsContainer = (props: IProps) => {
       <Typography variant={'h1'} align={'center'}>
         Wylot z: {props.query.airportCity}
       </Typography>
-      <TypographySlogan text={'Twoja wymarzona pogoda'} />
+      <TypographySlogan align={'center'} text={'Twoja wymarzona pogoda'} />
       <Typography
         align={'center'}
         variant={'subtitle1'}
