@@ -12,7 +12,7 @@ import { TravelOption } from './CountryResultList/CountryResultList'
 
 interface IProps {
   showYourCityWeather: boolean
-  weatherData: TravelOption[]
+  weatherData?: TravelOption[]
   hidePrice?: true
 }
 

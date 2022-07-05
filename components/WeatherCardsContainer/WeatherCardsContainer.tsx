@@ -5,7 +5,7 @@ import { TravelOption } from '../CountryResultList/CountryResultList'
 
 interface IProps {
   sx: Record<string, unknown>
-  weatherAndFlight: TravelOption[]
+  weatherAndFlight?: TravelOption[]
   hidePrice?: true
 }
 
@@ -21,20 +21,21 @@ export const WeatherCardsContainer = (props: IProps) => {
         ...props.sx,
       }}
     >
-      {props.weatherAndFlight.map((day, id) => {
-        return (
-          <WeatherCard
-            key={id}
-            date={day.date}
-            weatherImage={day.weatherImage}
-            temperatureDay={day.temperatureDay}
-            temperatureNight={day.temperatureNight}
-            departurePrice={day.departurePrice}
-            arrivalPrice={day.arrivalPrice}
-            hidePrice={props.hidePrice}
-          />
-        )
-      })}
+      {props.weatherAndFlight &&
+        props.weatherAndFlight.map((day, id) => {
+          return (
+            <WeatherCard
+              key={id}
+              date={day.date}
+              weatherImage={day.weatherImage}
+              temperatureDay={day.temperatureDay}
+              temperatureNight={day.temperatureNight}
+              departurePrice={day.departurePrice}
+              arrivalPrice={day.arrivalPrice}
+              hidePrice={props.hidePrice}
+            />
+          )
+        })}
     </Box>
   )
 }

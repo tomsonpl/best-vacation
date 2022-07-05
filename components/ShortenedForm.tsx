@@ -28,7 +28,7 @@ export const ShortenedForm = (props: IProps) => {
           alignItems: 'center',
         }}
       >
-        <TypographySlogan text={'Zmień wyszukiwanie'} />
+        <TypographySlogan align={'left'} text={'Zmień wyszukiwanie'} />
         <ClosingButton onClose={props.onClose} />
       </Box>
       <SearchForm showYourCityWeather={false} />

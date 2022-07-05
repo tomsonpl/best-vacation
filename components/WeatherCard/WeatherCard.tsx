@@ -47,7 +47,7 @@ export const WeatherCard: React.FC<IProps> = ({
           alignItems: 'center',
           justifyContent: 'center',
           padding: '5px',
-          margin: '7px',
+          margin: '5px',
           boxShadow: 2,
         }}
       >
