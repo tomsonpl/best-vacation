@@ -41,9 +41,9 @@ const Home: NextPage = () => {
         </Container>
       </Box>
       <TypographySlogan
-        text={'Proponowane'}
+        text={'Najlepsze okazje wybrane z myślą o Tobie'}
         align={'left'}
-        sx={{ ml: '40px' }}
+        sx={{ ml: '6%' }}
       />
       <Box sx={{ mt: '20px' }}>
         {data.map((offer) => {
