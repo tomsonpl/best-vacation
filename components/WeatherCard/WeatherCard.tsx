@@ -13,6 +13,7 @@ interface IProps {
   temperatureNight: number
   departurePrice?: number
   arrivalPrice?: number
+  hidePrice?: true
 }
 
 export const WeatherCard: React.FC<IProps> = ({
@@ -23,6 +24,7 @@ export const WeatherCard: React.FC<IProps> = ({
   temperatureNight,
   departurePrice,
   arrivalPrice,
+  hidePrice,
 }) => {
   return (
     <Box
@@ -59,7 +61,7 @@ export const WeatherCard: React.FC<IProps> = ({
           />
         </Box>
       </Box>
-      {departurePrice ? (
+      {!hidePrice ? (
         <Box
           sx={{
             display: 'flex',

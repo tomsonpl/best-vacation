@@ -1,13 +1,12 @@
 import { NextPage } from 'next'
 import { Container, Divider, Modal } from '@mui/material'
-import { CountryResultList } from '../components/CountryResultList/CountryResultList'
 import * as React from 'react'
 import { BaseButton } from '../components/Button/Button'
 import { SelectedOptionsContainer } from '../components/SelectedOptionsContainer/SelectedOptionsContainer'
 import { ShortenedForm } from '../components/ShortenedForm'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { data } from '../mocs/data'
+import { ResultList } from '../components/ResultList/ResultList'
 // import { Slogan } from '../components/Slogan'
 
 const List: NextPage = () => {
@@ -40,17 +39,7 @@ const List: NextPage = () => {
       {/*  <Slogan>Brak wyników spełniających powyższe kryteria.</Slogan>*/}
       {/*  <Slogan>Zmień kryteria wyszukiwania.</Slogan>*/}
       {/*</Box>*/}
-      {data.map((offer) => {
-        return (
-          <CountryResultList
-            cityNumber={offer.id}
-            key={offer.id}
-            city={offer.city}
-            country={offer.country}
-            weatherAndFlight={offer.weatherAndFlight}
-          />
-        )
-      })}
+      <ResultList />
     </Container>
   )
 }

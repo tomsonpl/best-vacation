@@ -8,7 +8,7 @@ interface IProps {
 export const TemperatureTypography = ({ color, temperature }: IProps) => {
   return (
     <Typography variant={'subtitle1'} sx={{ color: color }}>
-      {temperature} <span>&#8451;</span>
+      {Math.round(temperature)} <span>&#8451;</span>
     </Typography>
   )
 }
