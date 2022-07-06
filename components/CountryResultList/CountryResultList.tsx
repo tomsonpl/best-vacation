@@ -3,7 +3,7 @@ import { WeatherCardsContainer } from '../WeatherCardsContainer/WeatherCardsCont
 import { WeatherListCard } from '../WeatherCard/WeatherListCard'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useMemo, useState } from 'react'
-import Image from 'next/image'
+// import Image from 'next/image'
 // import church_dome_malta from '../../assets/PhotosOfCities/churchDomeMalta.jpg'
 import { SelectedDateAndPriceContainer } from '../SelectedDateAndPriceContainer/SelectedDateAndPriceContainer'
 import cartagenaSpainLandscape from '../../assets/PhotosOfCities/cartagenaSpainLandscape.jpg'
@@ -75,18 +75,21 @@ export const CountryResultList = (props: IProps) => {
           position: 'relative',
           height: '200px',
           width: 'auto',
+          backgroundImage: `url(${cartagenaSpainLandscape.src})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
         }}
       >
-        <Image
-          src={cartagenaSpainLandscape}
-          alt="Zdjęcie miasta"
-          layout={'fill'}
-          // sizes={'100vw'}
-          objectFit="cover"
-          quality={100}
-          // height={200}
-          // width={300}
-        />
+        {/*<Image*/}
+        {/*  src={cartagenaSpainLandscape}*/}
+        {/*  alt="Zdjęcie miasta"*/}
+        {/*  opacity={'0'} */}
+        {/*  layout={'fill'}*/}
+        {/*  // sizes={'100vw'}*/}
+        {/*  objectFit="cover"*/}
+        {/*  quality={100}*/}
+        {/*  // height={200}*/}
+        {/*  // width={300}*/}
       </Box>
       <Divider sx={{ mt: '10px', mb: { xs: '10px', sm: 0 } }} />
       <SelectedDateAndPriceContainer />
