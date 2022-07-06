@@ -21,21 +21,20 @@ export const WeatherCardsContainer = (props: IProps) => {
         ...props.sx,
       }}
     >
-      {props.weatherAndFlight &&
-        props.weatherAndFlight.map((day, id) => {
-          return (
-            <WeatherCard
-              key={id}
-              date={day.date}
-              weatherImage={day.weatherImage}
-              temperatureDay={day.temperatureDay}
-              temperatureNight={day.temperatureNight}
-              departurePrice={day.departurePrice}
-              arrivalPrice={day.arrivalPrice}
-              hidePrice={props.hidePrice}
-            />
-          )
-        })}
+      {props.weatherAndFlight.map((day, id) => {
+        return (
+          <WeatherCard
+            key={id}
+            date={day.date}
+            weatherImage={day.weatherImage}
+            temperatureDay={day.temperatureDay}
+            temperatureNight={day.temperatureNight}
+            departurePrice={day.departurePrice}
+            arrivalPrice={day.arrivalPrice}
+            hidePrice={props.hidePrice}
+          />
+        )
+      })}
     </Box>
   )
 }
