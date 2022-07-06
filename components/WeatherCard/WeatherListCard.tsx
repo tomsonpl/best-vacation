@@ -2,7 +2,7 @@ import { Typography, Box } from '@mui/material'
 import Image from 'next/image'
 import * as React from 'react'
 import { PriceButton } from '../Button/PriceButton'
-import { TravelOption } from '../HeaderOfOffer/HeaderOfOffer'
+import { TravelOption } from '../CountryResultList/CountryResultList'
 import { TemperatureTypography } from '../Typography/TemperatureTypography'
 
 interface IProps {

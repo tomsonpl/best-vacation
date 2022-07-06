@@ -1,14 +1,15 @@
-import { SearchForm } from './SearchForm'
 import { Box, Container } from '@mui/material'
 import * as React from 'react'
 import { ClosingButton } from './Button/ClosingButton'
 import { TypographySlogan } from './Typography/TypographySlogan'
+import { ReactNode } from 'react'
 
 interface IProps {
   onClose: () => void
+  children: ReactNode
 }
 
-export const ShortenedForm = (props: IProps) => {
+export const ModalBodyWrapper = (props: IProps) => {
   return (
     <Container
       sx={{
@@ -28,10 +29,10 @@ export const ShortenedForm = (props: IProps) => {
           alignItems: 'center',
         }}
       >
-        <TypographySlogan text={'Zmień wyszukiwanie'} />
+        <TypographySlogan align={'left'} text={'Zmień wyszukiwanie'} />
         <ClosingButton onClose={props.onClose} />
       </Box>
-      <SearchForm showYourCityWeather={false} />
+      {props.children}
     </Container>
   )
 }

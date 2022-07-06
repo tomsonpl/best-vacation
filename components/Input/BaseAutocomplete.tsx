@@ -2,6 +2,7 @@ import { TextField, Autocomplete, Box } from '@mui/material'
 import React from 'react'
 
 interface IProps {
+  type?: 'submit'
   options: { label: string }[]
   placeholder: string
   field: {

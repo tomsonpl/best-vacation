@@ -2,11 +2,12 @@ import { Container, Typography, Divider, Box } from '@mui/material'
 import { WeatherCardsContainer } from '../WeatherCardsContainer/WeatherCardsContainer'
 import { WeatherListCard } from '../WeatherCard/WeatherListCard'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { useMemo } from 'react'
-import Image from 'next/image'
+import { useMemo, useState } from 'react'
+// import Image from 'next/image'
 // import church_dome_malta from '../../assets/PhotosOfCities/churchDomeMalta.jpg'
 import { SelectedDateAndPriceContainer } from '../SelectedDateAndPriceContainer/SelectedDateAndPriceContainer'
 import cartagenaSpainLandscape from '../../assets/PhotosOfCities/cartagenaSpainLandscape.jpg'
+import { BaseButton } from '../Button/Button'
 
 export interface TravelOption {
   date: string
@@ -23,15 +24,34 @@ interface IProps {
   city: string
   country: string
   weatherAndFlight: TravelOption[]
+  defaultItemsToShow?: number
 }
 
-export const HeaderOfOffer = (props: IProps) => {
+export const CountryResultList = (props: IProps) => {
+  const { defaultItemsToShow = 14 } = props
+  const [itemsToShow, setItemsToShow] = useState(defaultItemsToShow)
   const matches = useMediaQuery('(min-width:930px)')
   const renderWeatherList = useMemo(() => {
-    return props.weatherAndFlight.map((day) => {
-      return <WeatherListCard key={props.key} weatherAndFlight={day} />
-    })
-  }, [props.key, props.weatherAndFlight])
+    return (
+      <>
+        {props.weatherAndFlight.map((day, index) => {
+          if (index < itemsToShow) {
+            return <WeatherListCard key={props.key} weatherAndFlight={day} />
+          }
+          return null
+        })}
+        {itemsToShow < props.weatherAndFlight.length && (
+          <BaseButton
+            sx={{ my: '0px', fontSize: '12px' }}
+            onClick={() => setItemsToShow((prevState) => prevState + 9)}
+          >
+            Pokaż więcej
+          </BaseButton>
+        )}
+      </>
+    )
+  }, [itemsToShow, props.key, props.weatherAndFlight])
+
   return (
     <Container
       sx={{
@@ -55,18 +75,21 @@ export const HeaderOfOffer = (props: IProps) => {
           position: 'relative',
           height: '200px',
           width: 'auto',
+          backgroundImage: `url(${cartagenaSpainLandscape.src})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
         }}
       >
-        <Image
-          src={cartagenaSpainLandscape}
-          alt="Zdjęcie miasta"
-          layout={'fill'}
-          // sizes={'100vw'}
-          objectFit="cover"
-          quality={100}
-          // height={200}
-          // width={300}
-        />
+        {/*<Image*/}
+        {/*  src={cartagenaSpainLandscape}*/}
+        {/*  alt="Zdjęcie miasta"*/}
+        {/*  opacity={'0'} */}
+        {/*  layout={'fill'}*/}
+        {/*  // sizes={'100vw'}*/}
+        {/*  objectFit="cover"*/}
+        {/*  quality={100}*/}
+        {/*  // height={200}*/}
+        {/*  // width={300}*/}
       </Box>
       <Divider sx={{ mt: '10px', mb: { xs: '10px', sm: 0 } }} />
       <SelectedDateAndPriceContainer />

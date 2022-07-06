@@ -108,7 +108,7 @@ export const WeatherButtonContainer = ({ activeIds, onClick }: IProps) => {
         display: 'flex',
         flexDirection: 'row',
         overflowY: 'scroll',
-        justifyContent: { xs: 'space-between', md: 'center' },
+        justifyContent: { xs: 'space-between', xl: 'center' },
       }}
     >
       {options.map((option) => {

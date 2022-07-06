@@ -1,11 +1,12 @@
 import { WeatherCard } from '../WeatherCard/WeatherCard'
 import Box from '@mui/material/Box'
 import * as React from 'react'
-import { TravelOption } from '../HeaderOfOffer/HeaderOfOffer'
+import { TravelOption } from '../CountryResultList/CountryResultList'
 
 interface IProps {
   sx: Record<string, unknown>
   weatherAndFlight: TravelOption[]
+  hidePrice?: true
 }
 
 export const WeatherCardsContainer = (props: IProps) => {
@@ -30,6 +31,7 @@ export const WeatherCardsContainer = (props: IProps) => {
             temperatureNight={day.temperatureNight}
             departurePrice={day.departurePrice}
             arrivalPrice={day.arrivalPrice}
+            hidePrice={props.hidePrice}
           />
         )
       })}
