@@ -1,31 +1,17 @@
-import { WeatherCardsContainer } from './WeatherCardsContainer/WeatherCardsContainer'
-import { TypographySlogan } from './Typography/TypographySlogan'
-import { NumberInput } from './Input/NumberInput'
+import { TypographySlogan } from '../Typography/TypographySlogan'
+import { NumberInput } from '../Input/NumberInput'
 import { Typography, Box } from '@mui/material'
-import { WeatherButtonContainer } from './Button/WeatherButtonContainer/WeatherButtonContainer'
+import { WeatherButtonContainer } from '../Button/WeatherButtonContainer/WeatherButtonContainer'
 import * as React from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import { BaseButton } from './Button/Button'
+import { BaseButton } from '../Button/Button'
 import { useRouter } from 'next/router'
-import { BaseAutocomplete } from './Input/BaseAutocomplete'
-import { TravelOption } from './CountryResultList/CountryResultList'
-
-interface IProps {
-  showYourCityWeather: boolean
-  weatherData: TravelOption[]
-  hidePrice?: true
-}
-
-const cities = [
-  { label: 'Warszawa' },
-  { label: 'Białystok' },
-  { label: 'Będzin' },
-  { label: 'Gdańsk' },
-  { label: 'Szczecin' },
-  { label: 'Zakopane' },
-  { label: 'Częstochowa' },
-  { label: 'Radom' },
-]
+import { BaseAutocomplete } from '../Input/BaseAutocomplete'
+// import { TravelOption } from '../CountryResultList/CountryResultList'
+//
+// interface IProps {
+//   weatherData?: TravelOption[]
+// }
 
 const airportCities = [
   { label: 'Warszawa' },
@@ -45,15 +31,10 @@ interface FormValues {
   maxTemperature: number
   perfectWeather: number[]
 }
-export const SearchForm = ({
-  showYourCityWeather,
-  weatherData,
-  hidePrice,
-}: IProps) => {
+export const DreamedWeatherForm = () => {
   const router = useRouter()
   const { control, handleSubmit, watch, setValue } = useForm<FormValues>({
     defaultValues: {
-      yourCity: '',
       airportCity: '',
       minTemperature: 0,
       maxTemperature: 0,
@@ -80,29 +61,6 @@ export const SearchForm = ({
           router.push({ pathname: '/list', query: { ...data } })
         })}
       >
-        {showYourCityWeather && (
-          <>
-            <Controller
-              name="yourCity"
-              control={control}
-              render={(renderProps) => {
-                console.log('wiadomosc', renderProps)
-                return (
-                  <BaseAutocomplete
-                    options={cities}
-                    placeholder={'Sprawdź pogodę w Twoim mieście'}
-                    {...renderProps}
-                  />
-                )
-              }}
-            />
-            <WeatherCardsContainer
-              hidePrice={hidePrice}
-              weatherAndFlight={weatherData}
-              sx={{ overflowY: 'scroll' }}
-            />
-          </>
-        )}
         <Controller
           name="airportCity"
           control={control}

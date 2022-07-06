@@ -3,10 +3,11 @@ import { Container, Divider, Modal } from '@mui/material'
 import * as React from 'react'
 import { BaseButton } from '../components/Button/Button'
 import { SelectedOptionsContainer } from '../components/SelectedOptionsContainer/SelectedOptionsContainer'
-import { ShortenedForm } from '../components/ShortenedForm'
+import { ModalBodyWrapper } from '../components/ModalBodyWrapper'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { ResultList } from '../components/ResultList/ResultList'
+import { DreamedWeatherForm } from '../components/DreamedWeatherForm/DreamedWeatherForm'
 // import { Slogan } from '../components/Slogan'
 
 const List: NextPage = () => {
@@ -33,7 +34,9 @@ const List: NextPage = () => {
       </BaseButton>
       <Divider sx={{ mb: '20px' }} />
       <Modal open={open}>
-        <ShortenedForm onClose={handleClose} />
+        <ModalBodyWrapper onClose={handleClose}>
+          <DreamedWeatherForm />
+        </ModalBodyWrapper>
       </Modal>
       {/*<Box sx={{ mt: '10%' }}>*/}
       {/*  <Slogan>Brak wyników spełniających powyższe kryteria.</Slogan>*/}

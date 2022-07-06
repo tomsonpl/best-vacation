@@ -5,7 +5,7 @@ import { TravelOption } from '../CountryResultList/CountryResultList'
 
 interface IProps {
   sx: Record<string, unknown>
-  weatherAndFlight?: TravelOption[]
+  weatherAndFlight: TravelOption[]
   hidePrice?: true
 }
 
