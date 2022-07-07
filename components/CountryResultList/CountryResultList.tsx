@@ -8,22 +8,14 @@ import { useMemo, useState } from 'react'
 import { SelectedDateAndPriceContainer } from '../SelectedDateAndPriceContainer/SelectedDateAndPriceContainer'
 import cartagenaSpainLandscape from '../../assets/PhotosOfCities/cartagenaSpainLandscape.jpg'
 import { BaseButton } from '../Button/Button'
-
-export interface TravelOption {
-  date: string
-  weatherImage: string
-  temperatureDay: number
-  temperatureNight: number
-  departurePrice?: number
-  arrivalPrice?: number
-}
+import { WeatherData } from '../../mocks/types'
 
 interface IProps {
   cityNumber: number
   key: number
   city: string
   country: string
-  weatherAndFlight: TravelOption[]
+  weatherAndFlight: WeatherData[]
   defaultItemsToShow?: number
 }
 

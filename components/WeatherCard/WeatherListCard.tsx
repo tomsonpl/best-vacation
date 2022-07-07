@@ -1,25 +1,29 @@
 import { Typography, Box } from '@mui/material'
-import Image from 'next/image'
+// import Image from 'next/image'
 import * as React from 'react'
 import { PriceButton } from '../Button/PriceButton'
-import { TravelOption } from '../CountryResultList/CountryResultList'
 import { TemperatureTypography } from '../Typography/TemperatureTypography'
+import { WeatherData } from '../../mocks/types'
 
 interface IProps {
   key: number
-  weatherAndFlight: TravelOption
+  weatherAndFlight: WeatherData
 }
 
 export const WeatherListCard: React.FC<IProps> = (props) => {
-  const {
-    // borderColor,
-    date,
-    weatherImage,
-    temperatureDay,
-    temperatureNight,
-    departurePrice,
-    arrivalPrice,
-  } = props.weatherAndFlight
+  const date = props.weatherAndFlight.datetime
+  const temperatureDay = props.weatherAndFlight.max_temp
+  const temperatureNight = props.weatherAndFlight.low_temp
+
+  const formatDate = (date: string) => {
+    const iso = new Date(date).toISOString().slice(0, 10)
+    return iso.split('-').reverse().join('.')
+  }
+
+  //   weatherImage
+  //   departurePrice,
+  //   arrivalPrice,
+  // } = props.weatherAndFlight
   return (
     <Box
       sx={{
@@ -40,9 +44,9 @@ export const WeatherListCard: React.FC<IProps> = (props) => {
       }}
     >
       <Typography variant={'h6'} sx={{ mr: '10px' }}>
-        {date}
+        {formatDate(date)}
       </Typography>
-      <Image src={weatherImage} width={'50px'} height={'50px'} alt="pogoda" />
+      {/*<Image src={weatherImage} width={'50px'} height={'50px'} alt="pogoda" />*/}
       <Box
         sx={{
           display: 'flex',
@@ -56,12 +60,8 @@ export const WeatherListCard: React.FC<IProps> = (props) => {
           temperature={temperatureNight}
           color={'rgba(128, 128, 128, 1)'}
         />
-        <PriceButton
-          color={'blue'}
-          borderColor={'blue'}
-          price={departurePrice}
-        />
-        <PriceButton color={'red'} borderColor={'red'} price={arrivalPrice} />
+        <PriceButton color={'blue'} borderColor={'blue'} price={400} />
+        <PriceButton color={'red'} borderColor={'red'} price={500} />
       </Box>
     </Box>
   )

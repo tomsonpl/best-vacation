@@ -1,16 +1,28 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Box, Container } from '@mui/material'
+import { Box, CircularProgress, Container, Typography } from '@mui/material'
 import beach from '../assets/beach.jpg'
 import * as React from 'react'
 import { TypographySlogan } from '../components/Typography/TypographySlogan'
 import { ResultList } from '../components/ResultList/ResultList'
-import { getData } from '../mocks/getData'
 import { DreamedWeatherForm } from '../components/DreamedWeatherForm/DreamedWeatherForm'
 import { CurrentLocationWeatherForm } from '../components/CurrentLocationWeatherForm/CurrentLocationWeatherForm'
+import { useAppDispatch, useAppSelector } from '../app/hooks'
+import {
+  getWeatherList,
+  selectWeatherList,
+} from '../features/weather/weatherListSlice'
+import { useEffect } from 'react'
 
 const Home: NextPage = () => {
-  const data = getData()
+  const { data, pending, error } = useAppSelector(selectWeatherList)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getWeatherList('Warszawa'))
+    // dispatch(getWeatherList('Białystok'))
+    // dispatch(getWeatherList('Szczecin'))
+  }, [dispatch])
 
   return (
     <>
@@ -41,10 +53,7 @@ const Home: NextPage = () => {
             pb: '15px',
           }}
         >
-          <CurrentLocationWeatherForm
-            hidePrice={true}
-            weatherData={data[0].weatherAndFlight}
-          />
+          <CurrentLocationWeatherForm hidePrice={true} />
         </Container>
         <Container
           sx={{
@@ -58,10 +67,6 @@ const Home: NextPage = () => {
           }}
         >
           <DreamedWeatherForm />
-          {/*<SearchForm*/}
-          {/*  weatherData={data[0].weatherAndFlight}*/}
-          {/*  hidePrice={true}*/}
-          {/*/>*/}
         </Container>
       </Box>
       <TypographySlogan
@@ -69,9 +74,17 @@ const Home: NextPage = () => {
         align={'left'}
         sx={{ mx: '6%' }}
       />
-      <Box sx={{ mt: '20px' }}>
-        <ResultList />
-      </Box>
+      {pending && <CircularProgress />}
+      {data && (
+        <Box sx={{ mt: '20px' }}>
+          <ResultList data={data} />
+        </Box>
+      )}
+      {error && (
+        <Typography align={'center'} variant={'h5'} sx={{ mt: '15px' }}>
+          Coś poszło nie tak, spróbuj jeszcze raz.
+        </Typography>
+      )}
     </>
   )
 }
