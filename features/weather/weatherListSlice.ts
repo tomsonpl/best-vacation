@@ -37,7 +37,6 @@ export const weatherListSlice = createSlice({
   // Since this is an API call we have 3 possible outcomes: pending, fulfilled and rejected. We have made allocations for all 3 outcomes.
   // Doing this is good practice as we can tap into the status of the API call and give our users an idea of what's happening in the background.
   extraReducers: (builder) => {
-    console.log({ builder })
     builder
       .addCase(getWeatherList.pending, (state) => {
         state.pending = true
