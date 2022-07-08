@@ -72,7 +72,7 @@ const Home: NextPage = () => {
       <TypographySlogan
         text={'Najlepsze okazje wybrane z myślą o Tobie'}
         align={'left'}
-        sx={{ mx: '6%' }}
+        sx={{ mx: { xs: '6%', md: '8%' } }}
       />
       {pending && <CircularProgress />}
       {data && (
