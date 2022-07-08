@@ -21,7 +21,7 @@ export const getWeatherList = createAsyncThunk(
   'weather/weatherList',
   async (city: string) => {
     const response = await axios.get(
-      `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&country=Polska&days=14&key=ca83191267404f70958c2644fe96cf01`
+      `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&country=Polska&days=14&key=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`
     )
     return response.data
   }
@@ -45,7 +45,6 @@ export const weatherListSlice = createSlice({
       .addCase(getWeatherList.fulfilled, (state, { payload }) => {
         // When the API call is successful and we get some data,the data becomes the `fulfilled` action payload
         state.pending = false
-        console.log({ state })
         state.data = [payload]
       })
       .addCase(getWeatherList.rejected, (state) => {

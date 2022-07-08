@@ -21,7 +21,7 @@ export const getWeather = createAsyncThunk(
   'weather/weather',
   async (city: string) => {
     const response = await axios.get(
-      `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&country=Polska&days=14&key=ca83191267404f70958c2644fe96cf01`
+      `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&country=Polska&days=14&key=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`
     )
     return response.data
   }
