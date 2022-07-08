@@ -30,7 +30,7 @@ export const WeatherCardsContainer = (props: IProps) => {
           <WeatherCard
             key={id}
             date={formatDate(day.datetime)}
-            // weatherImage={day.weatherImage}
+            weatherImage={day.weather.code}
             temperatureDay={day.max_temp}
             temperatureNight={day.low_temp}
             departurePrice={400}

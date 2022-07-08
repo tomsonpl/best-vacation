@@ -1,9 +1,10 @@
 import { Typography, Box } from '@mui/material'
-// import Image from 'next/image'
+import Image from 'next/image'
 import * as React from 'react'
 import { PriceButton } from '../Button/PriceButton'
 import { TemperatureTypography } from '../Typography/TemperatureTypography'
 import { WeatherData } from '../../mocks/types'
+import { weatherIconsMap } from '../../mocks/weatherIconsOptions'
 
 interface IProps {
   key: number
@@ -14,13 +15,13 @@ export const WeatherListCard: React.FC<IProps> = (props) => {
   const date = props.weatherAndFlight.datetime
   const temperatureDay = props.weatherAndFlight.max_temp
   const temperatureNight = props.weatherAndFlight.low_temp
+  const weatherImage = props.weatherAndFlight.weather.code
 
   const formatDate = (date: string) => {
     const iso = new Date(date).toISOString().slice(0, 10)
     return iso.split('-').reverse().join('.')
   }
 
-  //   weatherImage
   //   departurePrice,
   //   arrivalPrice,
   // } = props.weatherAndFlight
@@ -43,10 +44,13 @@ export const WeatherListCard: React.FC<IProps> = (props) => {
         boxShadow: 2,
       }}
     >
-      <Typography variant={'h6'} sx={{ mr: '10px' }}>
-        {formatDate(date)}
-      </Typography>
-      {/*<Image src={weatherImage} width={'50px'} height={'50px'} alt="pogoda" />*/}
+      <Typography variant={'h6'}>{formatDate(date)}</Typography>
+      <Image
+        src={weatherIconsMap[weatherImage].icon}
+        width={'50px'}
+        height={'50px'}
+        alt="pogoda"
+      />
       <Box
         sx={{
           display: 'flex',
