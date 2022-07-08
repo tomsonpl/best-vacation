@@ -5,7 +5,7 @@ interface IProps {
   icon: string
   title: string
   onClick: () => void
-  isActive: boolean
+  isActive?: boolean
 }
 
 export const WeatherButton = ({ icon, onClick, isActive }: IProps) => {

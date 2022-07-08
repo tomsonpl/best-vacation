@@ -6,15 +6,19 @@ import { WeatherButtonContainer } from '../Button/WeatherButtonContainer/Weather
 
 interface IProps {
   query: {
-    yourCity?: string
     airportCity?: string
     minTemperature?: string
     maxTemperature?: string
-    perfectWeather?: string
+    perfectWeather?: string[]
   }
 }
 
 export const SelectedOptionsContainer = (props: IProps) => {
+  const convertToNumber = () => {
+    return props.query.perfectWeather?.map((str) => {
+      return parseInt(str, 10)
+    })
+  }
   return (
     <Box>
       <Typography variant={'h1'} align={'center'}>
@@ -29,7 +33,10 @@ export const SelectedOptionsContainer = (props: IProps) => {
         {props.query.minTemperature}
         <span>&#8451;</span> - {props.query.maxTemperature} <span>&#8451;</span>
       </Typography>
-      <WeatherButtonContainer activeIds={[1, 2, 3]} onClick={() => null} />
+      <WeatherButtonContainer
+        activeIds={convertToNumber()}
+        onClick={() => null}
+      />
       {/*<TemperatureTypography temperature={temperatureDay} color={'black'} />*/}
       {/*<TemperatureTypography*/}
       {/*  temperature={temperatureNight}*/}

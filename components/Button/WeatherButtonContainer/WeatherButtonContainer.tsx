@@ -77,7 +77,7 @@ const options = [
 ]
 
 interface IProps {
-  activeIds: number[]
+  activeIds?: number[]
   onClick: (id: number) => void
 }
 
@@ -93,7 +93,7 @@ export const WeatherButtonContainer = ({ activeIds, onClick }: IProps) => {
       }}
     >
       {options.map((option) => {
-        const isActive = activeIds.includes(option.id)
+        const isActive = activeIds?.includes(option.id)
         return (
           <WeatherButton
             onClick={() => onClick(option.id)}

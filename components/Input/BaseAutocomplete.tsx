@@ -7,6 +7,7 @@ interface IProps {
   placeholder: string
   field: {
     onChange: (SyntheticEvent: React.SyntheticEvent) => void
+    value: string
   }
 }
 
@@ -15,6 +16,7 @@ export const BaseAutocomplete = (props: IProps) => {
     <Box sx={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
       <Autocomplete
         {...props}
+        value={{ label: props.field.value }}
         disablePortal
         options={props.options}
         sx={{ width: '100%' }}

@@ -4,6 +4,7 @@ import { Button, ButtonProps } from '@mui/material'
 export interface IButtonProps extends ButtonProps {
   children: ReactNode
   sx: Record<string, unknown>
+  onClick?: () => void
 }
 
 export const BaseButton = ({ children, ...props }: IButtonProps) => {

@@ -6,7 +6,6 @@ interface IProps {
   data: WeatherResponse[]
 }
 export const ResultList = ({ data }: IProps) => {
-  console.log({ data })
   return (
     <>
       {data.map((offer, index) => {
