@@ -3,12 +3,13 @@ import Image from 'next/image'
 import * as React from 'react'
 import { PriceButton } from '../Button/PriceButton'
 import { TemperatureTypography } from '../Typography/TemperatureTypography'
+import { weatherIconsMap } from '../../mocks/weatherIconsOptions'
 
 interface IProps {
   key: number
   borderColor?: string
   date: string
-  weatherImage: string
+  weatherImage: number
   temperatureDay: number
   temperatureNight: number
   departurePrice?: number
@@ -52,7 +53,12 @@ export const WeatherCard: React.FC<IProps> = ({
         }}
       >
         <Typography variant={'h6'}>{date}</Typography>
-        <Image src={weatherImage} width={'50px'} height={'50px'} alt="pogoda" />
+        <Image
+          src={weatherIconsMap[weatherImage].icon}
+          width={'50px'}
+          height={'50px'}
+          alt="pogoda"
+        />
         <Box sx={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
           <TemperatureTypography temperature={temperatureDay} color={'black'} />
           <TemperatureTypography

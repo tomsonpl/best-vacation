@@ -11,7 +11,6 @@ interface IProps {
 }
 
 export const BaseAutocomplete = (props: IProps) => {
-  console.log({ baseAutocomplete: props })
   return (
     <Box sx={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
       <Autocomplete

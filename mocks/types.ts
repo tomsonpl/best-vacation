@@ -1,4 +1,4 @@
-interface WeatherData {
+export interface WeatherData {
   moonrise_ts: number
   wind_cdir: string
   rh: number

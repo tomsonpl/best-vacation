@@ -1,20 +1,22 @@
 import { CountryResultList } from '../CountryResultList/CountryResultList'
 import * as React from 'react'
-import { getData } from '../../mocks/getData'
+import { WeatherResponse } from '../../mocks/types'
 
-export const ResultList = () => {
-  const data = getData()
+interface IProps {
+  data: WeatherResponse[]
+}
+export const ResultList = ({ data }: IProps) => {
+  console.log({ data })
   return (
     <>
       {data.map((offer, index) => {
-        console.log({ offer })
         return (
           <CountryResultList
             cityNumber={index + 1}
             key={index + 1}
-            city={offer.city}
-            country={offer.country}
-            weatherAndFlight={offer.weatherAndFlight}
+            city={offer.city_name}
+            country={offer.timezone}
+            weatherAndFlight={offer.data}
             defaultItemsToShow={5}
           />
         )

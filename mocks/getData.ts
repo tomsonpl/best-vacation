@@ -9,10 +9,8 @@ export const getData = () => {
       country: warsawWeather.timezone,
       weatherAndFlight: warsawWeather.data.map((day) => {
         return {
-          date: day.datetime,
+          ...day,
           weatherImage: CloudyDay1,
-          temperatureDay: day.high_temp,
-          temperatureNight: day.low_temp,
           departurePrice: 500,
           arrivalPrice: 600,
         }
@@ -23,10 +21,9 @@ export const getData = () => {
       country: maltaWeather.timezone,
       weatherAndFlight: maltaWeather.data.map((day) => {
         return {
-          date: day.datetime,
+          ...day,
           weatherImage: CloudyDay1,
-          temperatureDay: day.high_temp,
-          temperatureNight: day.low_temp,
+
           departurePrice: 500,
           arrivalPrice: 600,
         }

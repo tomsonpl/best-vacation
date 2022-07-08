@@ -57,7 +57,6 @@ export const DreamedWeatherForm = () => {
     <Box>
       <form
         onSubmit={handleSubmit((data) => {
-          console.log({ data })
           router.push({ pathname: '/list', query: { ...data } })
         })}
       >
@@ -65,7 +64,6 @@ export const DreamedWeatherForm = () => {
           name="airportCity"
           control={control}
           render={(renderProps) => {
-            console.log({ renderProps })
             return (
               <BaseAutocomplete
                 options={airportCities}
@@ -87,7 +85,6 @@ export const DreamedWeatherForm = () => {
             name="minTemperature"
             control={control}
             render={({ field }) => {
-              console.log({ field })
               return <NumberInput {...field} label={'Od'} defaultValue={20} />
             }}
           />
@@ -96,7 +93,6 @@ export const DreamedWeatherForm = () => {
             name="maxTemperature"
             control={control}
             render={({ field }) => {
-              console.log({ field })
               return <NumberInput {...field} label={'Do'} defaultValue={25} />
             }}
           />
