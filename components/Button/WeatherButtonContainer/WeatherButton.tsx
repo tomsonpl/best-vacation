@@ -19,7 +19,6 @@ export const WeatherButton = ({ icon, onClick, isActive }: IProps) => {
           borderRadius: '5px',
           height: '60px',
           width: '60px',
-          // borderColor: borderColor,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',

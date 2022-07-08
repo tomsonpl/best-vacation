@@ -36,6 +36,7 @@ export const SelectedOptionsContainer = (props: IProps) => {
       <WeatherButtonContainer
         activeIds={convertToNumber()}
         onClick={() => null}
+        showOnlyActive={true}
       />
       {/*<TemperatureTypography temperature={temperatureDay} color={'black'} />*/}
       {/*<TemperatureTypography*/}
