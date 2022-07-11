@@ -47,7 +47,7 @@ export const DreamedWeatherForm = (props: IProps) => {
   const router = useRouter()
   const { control, handleSubmit, watch, setValue } = useForm<FormValues>({
     defaultValues: {
-      airportCity: props.query?.airportCity ? props.query?.airportCity : '',
+      airportCity: props.query?.airportCity || '',
       minTemperature: props.query?.minTemperature ? minTemperatureToNumber : 0,
       maxTemperature: props.query?.maxTemperature ? maxTemperatureToNumber : 0,
       perfectWeather: props.query?.perfectWeather ? convertToNumber() : [],
@@ -116,6 +116,8 @@ export const DreamedWeatherForm = (props: IProps) => {
         <WeatherButtonContainer
           activeIds={watchedPerfectWeather}
           onClick={handlePerfectWeatherClick}
+          showOnlyActive={false}
+          sx={{ justifyContent: { xs: 'space-between', xl: 'center' } }}
         />
         <BaseButton
           type={'submit'}

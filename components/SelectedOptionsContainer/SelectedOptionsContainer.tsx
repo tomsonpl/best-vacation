@@ -19,6 +19,8 @@ export const SelectedOptionsContainer = (props: IProps) => {
       return parseInt(str, 10)
     })
   }
+  console.log(props.query)
+  console.log(convertToNumber())
   return (
     <Box>
       <Typography variant={'h1'} align={'center'}>
@@ -37,6 +39,7 @@ export const SelectedOptionsContainer = (props: IProps) => {
         activeIds={convertToNumber()}
         onClick={() => null}
         showOnlyActive={true}
+        sx={{ justifyContent: 'center' }}
       />
       {/*<TemperatureTypography temperature={temperatureDay} color={'black'} />*/}
       {/*<TemperatureTypography*/}

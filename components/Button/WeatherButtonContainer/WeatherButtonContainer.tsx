@@ -80,12 +80,14 @@ interface IProps {
   activeIds?: number[]
   onClick: (id: number) => void
   showOnlyActive: boolean
+  sx: Record<string, unknown>
 }
 
 export const WeatherButtonContainer = ({
   activeIds,
   onClick,
   showOnlyActive,
+  sx,
 }: IProps) => {
   const weatherButtonList =
     showOnlyActive && activeIds?.length
@@ -98,7 +100,7 @@ export const WeatherButtonContainer = ({
         display: 'flex',
         flexDirection: 'row',
         overflowY: 'scroll',
-        justifyContent: { xs: 'space-between', xl: 'center' },
+        ...sx,
       }}
     >
       {weatherButtonList.map((option) => {
