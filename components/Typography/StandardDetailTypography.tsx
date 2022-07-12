@@ -4,9 +4,9 @@ import * as React from 'react'
 
 interface IProps {
   text: string
-  icon: never
+  icon: React.ReactElement
   unit: string
-  measure: number
+  measure: number | string
 }
 
 export const StandardDetailTypography = (props: IProps) => {
@@ -16,7 +16,7 @@ export const StandardDetailTypography = (props: IProps) => {
         display: 'flex',
         flexDirection: 'row',
         gap: '10px',
-        mt: '10px',
+        my: '10px',
         transform: 'rotate(360deg)',
       }}
     >

@@ -24,8 +24,15 @@ interface IProps {
 
 export const CountryResultList = (props: IProps) => {
   const [open, setOpen] = useState(false)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+  const [chosenDay, setChosenDay] = useState<number | null>(null)
+  const handleOpen = (index: number) => {
+    setChosenDay(index)
+    setOpen(true)
+  }
+  const handleClose = () => {
+    setChosenDay(null)
+    setOpen(false)
+  }
   const { defaultItemsToShow = 14 } = props
   const [itemsToShow, setItemsToShow] = useState(defaultItemsToShow)
   const matches = useMediaQuery('(min-width:930px)')
@@ -38,7 +45,7 @@ export const CountryResultList = (props: IProps) => {
               <WeatherListCard
                 key={props.key}
                 weatherAndFlight={day}
-                onClick={handleOpen}
+                onDetailClick={() => handleOpen(index)}
               />
             )
           }
@@ -103,7 +110,7 @@ export const CountryResultList = (props: IProps) => {
           key={props.key}
           weatherAndFlight={props.weatherAndFlight}
           sx={{ flexWrap: 'wrap' }}
-          onClick={handleOpen}
+          onDetailClick={handleOpen}
         />
       ) : (
         renderWeatherList
@@ -113,7 +120,12 @@ export const CountryResultList = (props: IProps) => {
           onClose={handleClose}
           text={'Szczegółowa prognoza pogody'}
         >
-          <DetailWeather />
+          {chosenDay != null && (
+            <DetailWeather
+              data={props.weatherAndFlight[chosenDay]}
+              city={props.city}
+            />
+          )}
         </ModalBodyWrapper>
       </Modal>
     </Container>

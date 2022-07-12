@@ -1,6 +1,5 @@
 import { Box, Typography } from '@mui/material'
 import * as React from 'react'
-import CloudyDay1 from '../../assets/WeatherIcons/CloudyDay1.svg'
 import Image from 'next/image'
 import { TemperatureTypography } from '../Typography/TemperatureTypography'
 import { StandardDetailTypography } from '../Typography/StandardDetailTypography'
@@ -11,17 +10,49 @@ import CloudQueueIcon from '@mui/icons-material/CloudQueue'
 import PercentIcon from '@mui/icons-material/Percent'
 import AcUnitIcon from '@mui/icons-material/AcUnit'
 import WbTwilightIcon from '@mui/icons-material/WbTwilight'
+import { WeatherData } from '../../mocks/types'
+import { weatherIconsMap } from '../../mocks/weatherIconsOptions'
 
-export const DetailWeather = () => {
+interface IProps {
+  data: WeatherData
+  city: string
+}
+
+export const DetailWeather = ({ data, city }: IProps) => {
+  const formatDate = (date: string) => {
+    const iso = new Date(date).toISOString().slice(0, 10)
+    return iso.split('-').reverse().join('.')
+  }
+
+  const formatWind = (speed: number) => {
+    return Math.round((speed * 3600) / 1000)
+  }
+
+  const timestampToTime = (unix: number) => {
+    const date = new Date(unix * 1000)
+    const hours = date.getHours()
+    const minutes = date.getMinutes()
+    return hours + ':' + minutes.toString().padStart(2, '0')
+  }
   return (
     <Box sx={{ pb: '20px' }}>
-      <Typography
-        variant={'h5'}
-        sx={{ m: '20px', fontWeight: '700' }}
-        align={'center'}
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          mt: '20px',
+          gap: '10%',
+        }}
       >
-        11.07.2022
-      </Typography>
+        <Typography variant={'h5'} sx={{ fontWeight: '700' }}>
+          {city}
+        </Typography>
+        <Typography variant={'h5'} sx={{ fontWeight: '700' }}>
+          {formatDate(data.valid_date)}
+        </Typography>
+      </Box>
+
       <Box
         sx={{
           display: 'flex',
@@ -36,7 +67,7 @@ export const DetailWeather = () => {
             justifyContent: 'center',
             alignItems: 'center',
             px: '30px',
-            gap: { xs: '30px', md: '100px' },
+            gap: '10%',
           }}
         >
           <Box
@@ -46,19 +77,19 @@ export const DetailWeather = () => {
             }}
           >
             <TemperatureTypography
-              temperature={34}
+              temperature={data.max_temp}
               color={'black'}
               sx={{ fontSize: '30px' }}
             />
             <TemperatureTypography
-              temperature={23}
+              temperature={data.low_temp}
               color={'rgba(128, 128, 128, 1)'}
               sx={{ fontSize: '18px' }}
             />
           </Box>
           <Box>
             <Image
-              src={CloudyDay1}
+              src={weatherIconsMap[data.weather.code].icon}
               width={'100px'}
               height={'100px'}
               alt="pogoda"
@@ -74,7 +105,6 @@ export const DetailWeather = () => {
             width: 'auto',
             backgroundColor: '#e2ebf6',
             p: '30px',
-            pt: '20px',
             borderRadius: '10px',
             boxShadow: 3,
           }}
@@ -84,22 +114,24 @@ export const DetailWeather = () => {
               text={'Wiatr'}
               icon={<AirIcon />}
               unit={' km/h'}
-              measure={15}
+              measure={formatWind(data.wind_spd)}
             />
-            <BoldDetailTypography>Max {30} km/h</BoldDetailTypography>
+            <BoldDetailTypography>
+              Max {formatWind(data.wind_gust_spd)} km/h
+            </BoldDetailTypography>
           </Box>
           <Box>
             <StandardDetailTypography
               text={'Deszcz'}
               icon={<OpacityOutlinedIcon />}
               unit={' mm'}
-              measure={15}
+              measure={data.precip.toFixed(2)}
             />
             <StandardDetailTypography
               text={'Zachmurzenie'}
               icon={<CloudQueueIcon />}
               unit={'%'}
-              measure={15}
+              measure={data.clouds}
             />
           </Box>
           <Box>
@@ -107,13 +139,13 @@ export const DetailWeather = () => {
               text={'Szansa opadów'}
               icon={<PercentIcon />}
               unit={'%'}
-              measure={15}
+              measure={data.pop}
             />
             <StandardDetailTypography
               text={'Śnieg'}
               icon={<AcUnitIcon />}
               unit={' mm'}
-              measure={15}
+              measure={data.snow}
             />
           </Box>
           <Box>
@@ -121,7 +153,7 @@ export const DetailWeather = () => {
               text={'Wschód słońca'}
               icon={<WbTwilightIcon />}
               unit={''}
-              measure={4.55}
+              measure={timestampToTime(data.sunrise_ts)}
             />
             <StandardDetailTypography
               text={'Zachód słońca'}
@@ -133,7 +165,7 @@ export const DetailWeather = () => {
                 />
               }
               unit={''}
-              measure={22.34}
+              measure={timestampToTime(data.sunset_ts)}
             />
           </Box>
         </Box>
