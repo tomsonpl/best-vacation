@@ -1,4 +1,4 @@
-import { Container, Typography, Divider, Box } from '@mui/material'
+import { Container, Typography, Divider, Box, Modal } from '@mui/material'
 import { WeatherCardsContainer } from '../WeatherCardsContainer/WeatherCardsContainer'
 import { WeatherListCard } from '../WeatherCard/WeatherListCard'
 import useMediaQuery from '@mui/material/useMediaQuery'
@@ -9,6 +9,9 @@ import { SelectedDateAndPriceContainer } from '../SelectedDateAndPriceContainer/
 import cartagenaSpainLandscape from '../../assets/PhotosOfCities/cartagenaSpainLandscape.jpg'
 import { BaseButton } from '../Button/Button'
 import { WeatherData } from '../../mocks/types'
+import { ModalBodyWrapper } from '../ModalBodyWrapper'
+import * as React from 'react'
+import { DetailWeather } from '../DetailWeather/DetailWeather'
 
 interface IProps {
   cityNumber: number
@@ -20,6 +23,9 @@ interface IProps {
 }
 
 export const CountryResultList = (props: IProps) => {
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
   const { defaultItemsToShow = 14 } = props
   const [itemsToShow, setItemsToShow] = useState(defaultItemsToShow)
   const matches = useMediaQuery('(min-width:930px)')
@@ -28,7 +34,13 @@ export const CountryResultList = (props: IProps) => {
       <>
         {props.weatherAndFlight.map((day, index) => {
           if (index < itemsToShow) {
-            return <WeatherListCard key={props.key} weatherAndFlight={day} />
+            return (
+              <WeatherListCard
+                key={props.key}
+                weatherAndFlight={day}
+                onClick={handleOpen}
+              />
+            )
           }
           return null
         })}
@@ -91,10 +103,19 @@ export const CountryResultList = (props: IProps) => {
           key={props.key}
           weatherAndFlight={props.weatherAndFlight}
           sx={{ flexWrap: 'wrap' }}
+          onClick={handleOpen}
         />
       ) : (
         renderWeatherList
       )}
+      <Modal open={open}>
+        <ModalBodyWrapper
+          onClose={handleClose}
+          text={'Szczegółowa prognoza pogody'}
+        >
+          <DetailWeather />
+        </ModalBodyWrapper>
+      </Modal>
     </Container>
   )
 }

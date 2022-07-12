@@ -15,6 +15,7 @@ interface IProps {
   departurePrice?: number
   arrivalPrice?: number
   hidePrice?: true
+  onClick: () => void
 }
 
 export const WeatherCard: React.FC<IProps> = ({
@@ -26,6 +27,7 @@ export const WeatherCard: React.FC<IProps> = ({
   departurePrice,
   arrivalPrice,
   hidePrice,
+  onClick,
 }) => {
   return (
     <Box
@@ -37,6 +39,7 @@ export const WeatherCard: React.FC<IProps> = ({
       }}
     >
       <Box
+        onClick={onClick}
         sx={{
           // border: 1,
           borderRadius: '5px',
@@ -50,6 +53,10 @@ export const WeatherCard: React.FC<IProps> = ({
           padding: '5px',
           margin: '5px',
           boxShadow: 2,
+          cursor: 'pointer',
+          '&:hover': {
+            background: '#e8e6e6',
+          },
         }}
       >
         <Typography variant={'h6'}>{date}</Typography>

@@ -9,6 +9,7 @@ import { weatherIconsMap } from '../../mocks/weatherIconsOptions'
 interface IProps {
   key: number
   weatherAndFlight: WeatherData
+  onClick: () => void
 }
 
 export const WeatherListCard: React.FC<IProps> = (props) => {
@@ -27,6 +28,7 @@ export const WeatherListCard: React.FC<IProps> = (props) => {
   // } = props.weatherAndFlight
   return (
     <Box
+      onClick={props.onClick}
       sx={{
         // border: 1,
         borderRadius: '5px',
@@ -42,6 +44,10 @@ export const WeatherListCard: React.FC<IProps> = (props) => {
         gap: { xs: 0, sm: '15px' },
         my: '10px',
         boxShadow: 2,
+        cursor: 'pointer',
+        '&:hover': {
+          background: '#e8e6e6',
+        },
       }}
     >
       <Typography variant={'h6'}>{formatDate(date)}</Typography>

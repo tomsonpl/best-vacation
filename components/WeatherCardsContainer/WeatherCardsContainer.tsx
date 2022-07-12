@@ -7,6 +7,7 @@ interface IProps {
   sx: Record<string, unknown>
   weatherAndFlight: WeatherData[]
   hidePrice?: true
+  onClick: () => void
 }
 
 export const WeatherCardsContainer = (props: IProps) => {
@@ -36,6 +37,7 @@ export const WeatherCardsContainer = (props: IProps) => {
             departurePrice={400}
             arrivalPrice={400}
             hidePrice={props.hidePrice}
+            onClick={props.onClick}
           />
         )
       })}

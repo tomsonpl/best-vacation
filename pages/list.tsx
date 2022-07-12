@@ -47,7 +47,7 @@ const List: NextPage = () => {
       </BaseButton>
       <Divider sx={{ mb: '20px' }} />
       <Modal open={open}>
-        <ModalBodyWrapper onClose={handleClose}>
+        <ModalBodyWrapper onClose={handleClose} text={'Zmień wyszukiwanie'}>
           <DreamedWeatherForm query={query} onClose={handleClose} />
         </ModalBodyWrapper>
       </Modal>
