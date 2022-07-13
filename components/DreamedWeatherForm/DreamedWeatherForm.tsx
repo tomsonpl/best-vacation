@@ -48,8 +48,8 @@ export const DreamedWeatherForm = (props: IProps) => {
   const { control, handleSubmit, watch, setValue } = useForm<FormValues>({
     defaultValues: {
       airportCity: props.query?.airportCity || '',
-      minTemperature: props.query?.minTemperature ? minTemperatureToNumber : 0,
-      maxTemperature: props.query?.maxTemperature ? maxTemperatureToNumber : 0,
+      minTemperature: props.query?.minTemperature ? minTemperatureToNumber : 18,
+      maxTemperature: props.query?.maxTemperature ? maxTemperatureToNumber : 27,
       perfectWeather: props.query?.perfectWeather ? convertToNumber() : [],
     },
   })
