@@ -7,6 +7,7 @@ import { ReactNode } from 'react'
 interface IProps {
   onClose: () => void
   children: ReactNode
+  text: string
 }
 
 export const ModalBodyWrapper = (props: IProps) => {
@@ -29,7 +30,7 @@ export const ModalBodyWrapper = (props: IProps) => {
           alignItems: 'center',
         }}
       >
-        <TypographySlogan align={'left'} text={'Zmień wyszukiwanie'} />
+        <TypographySlogan align={'left'} text={props.text} />
         <ClosingButton onClose={props.onClose} />
       </Box>
       {props.children}

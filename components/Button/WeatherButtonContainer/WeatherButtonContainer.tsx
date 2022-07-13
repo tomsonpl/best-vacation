@@ -77,11 +77,22 @@ const options = [
 ]
 
 interface IProps {
-  activeIds: number[]
+  activeIds?: number[]
   onClick: (id: number) => void
+  showOnlyActive: boolean
+  sx: Record<string, unknown>
 }
 
-export const WeatherButtonContainer = ({ activeIds, onClick }: IProps) => {
+export const WeatherButtonContainer = ({
+  activeIds,
+  onClick,
+  showOnlyActive,
+  sx,
+}: IProps) => {
+  const weatherButtonList =
+    showOnlyActive && activeIds?.length
+      ? options.filter((option) => activeIds.includes(option.id))
+      : options
   return (
     <Box
       sx={{
@@ -89,11 +100,11 @@ export const WeatherButtonContainer = ({ activeIds, onClick }: IProps) => {
         display: 'flex',
         flexDirection: 'row',
         overflowY: 'scroll',
-        justifyContent: { xs: 'space-between', xl: 'center' },
+        ...sx,
       }}
     >
-      {options.map((option) => {
-        const isActive = activeIds.includes(option.id)
+      {weatherButtonList.map((option) => {
+        const isActive = activeIds?.includes(option.id)
         return (
           <WeatherButton
             onClick={() => onClick(option.id)}

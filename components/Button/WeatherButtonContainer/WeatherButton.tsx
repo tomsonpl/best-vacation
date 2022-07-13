@@ -5,7 +5,7 @@ interface IProps {
   icon: string
   title: string
   onClick: () => void
-  isActive: boolean
+  isActive?: boolean
 }
 
 export const WeatherButton = ({ icon, onClick, isActive }: IProps) => {
@@ -19,7 +19,6 @@ export const WeatherButton = ({ icon, onClick, isActive }: IProps) => {
           borderRadius: '5px',
           height: '60px',
           width: '60px',
-          // borderColor: borderColor,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',

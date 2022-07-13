@@ -16,6 +16,7 @@ export const PriceButton = ({ color, borderColor, price }: IProps) => {
         borderColor: borderColor,
         padding: '5px',
       }}
+      onClick={(e) => e.stopPropagation()}
     >
       {price} zł
     </Button>
