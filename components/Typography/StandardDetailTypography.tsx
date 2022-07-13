@@ -5,11 +5,12 @@ import * as React from 'react'
 interface IProps {
   text: string
   icon: React.ReactElement
-  unit: string
+  unit?: string
   measure: number | string
 }
 
 export const StandardDetailTypography = (props: IProps) => {
+  const { text, icon, unit, measure } = props
   return (
     <Box
       sx={{
@@ -20,11 +21,11 @@ export const StandardDetailTypography = (props: IProps) => {
         transform: 'rotate(360deg)',
       }}
     >
-      {props.icon}
-      <Typography variant={'h5'}>{props.text}</Typography>
+      {icon}
+      <Typography variant={'h5'}>{text}</Typography>
       <BoldDetailTypography>
-        {props.measure}
-        {props.unit}
+        {measure}
+        {unit}
       </BoldDetailTypography>
     </Box>
   )

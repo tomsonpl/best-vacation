@@ -52,7 +52,6 @@ export const DetailWeather = ({ data, city }: IProps) => {
           {formatDate(data.valid_date)}
         </Typography>
       </Box>
-
       <Box
         sx={{
           display: 'flex',
@@ -152,7 +151,6 @@ export const DetailWeather = ({ data, city }: IProps) => {
             <StandardDetailTypography
               text={'Wschód słońca'}
               icon={<WbTwilightIcon />}
-              unit={''}
               measure={timestampToTime(data.sunrise_ts)}
             />
             <StandardDetailTypography
@@ -164,7 +162,6 @@ export const DetailWeather = ({ data, city }: IProps) => {
                   }}
                 />
               }
-              unit={''}
               measure={timestampToTime(data.sunset_ts)}
             />
           </Box>

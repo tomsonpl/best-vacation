@@ -1,5 +1,4 @@
 import { Box, Typography } from '@mui/material'
-// import { TemperatureTypography } from '../Typography/TemperatureTypography'
 import * as React from 'react'
 import { TypographySlogan } from '../Typography/TypographySlogan'
 import { WeatherButtonContainer } from '../Button/WeatherButtonContainer/WeatherButtonContainer'
@@ -14,13 +13,9 @@ interface IProps {
 }
 
 export const SelectedOptionsContainer = (props: IProps) => {
-  const convertToNumber = () => {
-    return props.query.perfectWeather?.map((str) => {
-      return parseInt(str, 10)
-    })
-  }
-  console.log(props.query)
-  console.log(convertToNumber())
+  const convertToNumber = props.query.perfectWeather?.map((str) => {
+    return parseInt(str, 10)
+  })
   return (
     <Box>
       <Typography variant={'h1'} align={'center'}>
@@ -36,16 +31,11 @@ export const SelectedOptionsContainer = (props: IProps) => {
         <span>&#8451;</span> - {props.query.maxTemperature} <span>&#8451;</span>
       </Typography>
       <WeatherButtonContainer
-        activeIds={convertToNumber()}
+        activeIds={convertToNumber}
         onClick={() => null}
         showOnlyActive={true}
         sx={{ justifyContent: 'center' }}
       />
-      {/*<TemperatureTypography temperature={temperatureDay} color={'black'} />*/}
-      {/*<TemperatureTypography*/}
-      {/*  temperature={temperatureNight}*/}
-      {/*  color={'rgba(128, 128, 128, 1)'}*/}
-      {/*/>*/}
     </Box>
   )
 }
