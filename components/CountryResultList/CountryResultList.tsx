@@ -115,7 +115,7 @@ export const CountryResultList = (props: IProps) => {
       ) : (
         renderWeatherList
       )}
-      <Modal open={open}>
+      <Modal open={open} sx={{ overflow: 'scroll' }}>
         <ModalBodyWrapper
           onClose={handleClose}
           text={'Szczegółowa prognoza pogody'}

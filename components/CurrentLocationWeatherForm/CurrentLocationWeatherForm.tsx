@@ -56,14 +56,13 @@ export const CurrentLocationWeatherForm = ({ hidePrice }: IProps) => {
             return (
               <BaseAutocomplete
                 options={cities}
-                placeholder={'Sprawdź pogodę w Twoim mieście'}
+                placeholder={'Pogoda w Twoim mieście'}
                 {...renderProps}
               />
             )
           }}
         />
         {pending && <CircularProgress />}
-
         {data && (
           <WeatherCardsContainer
             hidePrice={hidePrice}
