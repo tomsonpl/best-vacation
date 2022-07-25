@@ -13,9 +13,15 @@ interface IProps {
 }
 
 export const SelectedOptionsContainer = (props: IProps) => {
-  const convertToNumber = props.query.perfectWeather?.map((str) => {
-    return parseInt(str, 10)
-  })
+  const { perfectWeather } = props.query
+  const convertToNumber = perfectWeather
+    ? Array.isArray(perfectWeather)
+      ? perfectWeather?.map((str) => {
+          return parseInt(str, 10)
+        })
+      : [parseInt(perfectWeather, 10)]
+    : undefined
+
   return (
     <Container
       sx={{

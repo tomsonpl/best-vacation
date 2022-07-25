@@ -5,11 +5,7 @@ import MailIcon from '@mui/icons-material/Mail'
 import CopyrightIcon from '@mui/icons-material/Copyright'
 import Link from 'next/link'
 
-// import { useRouter } from 'next/router'
-
 export const Footer = () => {
-  // const router = useRouter()
-  //   '#f1f1f1' '#dedddc'
   return (
     <Box
       sx={{
@@ -36,7 +32,6 @@ export const Footer = () => {
             <MailIcon fontSize={'large'} sx={{ color: '#1976d2' }} />
           </a>
         </Link>
-        {/*<Typography>zaniewskamagdalena@wp.pl</Typography>*/}
         <Link href={'https://github.com/FrontendMagdalena'}>
           <a target="_blank">
             <GitHubIcon fontSize={'large'} sx={{ color: '#1976d2' }} />
