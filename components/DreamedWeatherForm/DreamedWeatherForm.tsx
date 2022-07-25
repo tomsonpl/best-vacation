@@ -7,6 +7,7 @@ import { useForm, Controller } from 'react-hook-form'
 import { BaseButton } from '../Button/Button'
 import { useRouter } from 'next/router'
 import { BaseAutocomplete } from '../Input/BaseAutocomplete'
+import { ErrorMessage } from '@hookform/error-message'
 
 const airportCities = [
   { label: 'Warszawa' },
@@ -26,15 +27,18 @@ interface FormValues {
   perfectWeather: number[]
 }
 
+export interface IQuery {
+  airportCity?: string
+  minTemperature?: string
+  maxTemperature?: string
+  perfectWeather?: string[]
+}
+
 interface IProps {
-  query?: {
-    airportCity?: string
-    minTemperature?: string
-    maxTemperature?: string
-    perfectWeather?: string[]
-  }
+  query?: IQuery
   onClose?: () => void
 }
+
 export const DreamedWeatherForm = (props: IProps) => {
   const minTemperatureToNumber = Number(props.query?.minTemperature)
   const maxTemperatureToNumber = Number(props.query?.maxTemperature)
@@ -45,7 +49,15 @@ export const DreamedWeatherForm = (props: IProps) => {
   }
 
   const router = useRouter()
-  const { control, handleSubmit, watch, setValue } = useForm<FormValues>({
+  const {
+    control,
+    handleSubmit,
+    watch,
+    setValue,
+    setError,
+    clearErrors,
+    formState,
+  } = useForm<FormValues>({
     defaultValues: {
       airportCity: props.query?.airportCity || '',
       minTemperature: props.query?.minTemperature ? minTemperatureToNumber : 18,
@@ -54,6 +66,7 @@ export const DreamedWeatherForm = (props: IProps) => {
     },
   })
 
+  const { errors } = formState
   const watchedPerfectWeather = watch('perfectWeather')
 
   const handlePerfectWeatherClick = (id: number) => {
@@ -65,12 +78,21 @@ export const DreamedWeatherForm = (props: IProps) => {
     } else {
       setValue('perfectWeather', [...watchedPerfectWeather, id])
     }
+    if (watchedPerfectWeather.length > 0) {
+      clearErrors()
+    }
   }
 
   return (
     <Box>
       <form
         onSubmit={handleSubmit((data) => {
+          if (data.perfectWeather.length < 2) {
+            setError('perfectWeather', {
+              message: 'Wybierz co najmniej 2 ikony pogody',
+            })
+            return
+          }
           router.push({ pathname: '/list', query: { ...data } })
           props.onClose && props.onClose()
         })}
@@ -118,6 +140,22 @@ export const DreamedWeatherForm = (props: IProps) => {
           onClick={handlePerfectWeatherClick}
           showOnlyActive={false}
           sx={{ justifyContent: { xs: 'space-between', xl: 'center' } }}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="perfectWeather"
+          render={(error) => (
+            <Typography
+              sx={{
+                pt: '10px',
+                color: 'red',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              {error.message}
+            </Typography>
+          )}
         />
         <BaseButton
           type={'submit'}
