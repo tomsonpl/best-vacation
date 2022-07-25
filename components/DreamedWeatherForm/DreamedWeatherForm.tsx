@@ -89,7 +89,7 @@ export const DreamedWeatherForm = (props: IProps) => {
         onSubmit={handleSubmit((data) => {
           if (data.perfectWeather.length < 2) {
             setError('perfectWeather', {
-              message: 'Wybierz conajmniej 2 ikony pogody',
+              message: 'Wybierz co najmniej 2 ikony pogody',
             })
             return
           }
@@ -145,7 +145,14 @@ export const DreamedWeatherForm = (props: IProps) => {
           errors={errors}
           name="perfectWeather"
           render={(error) => (
-            <Typography sx={{ pt: '10px', color: 'red' }}>
+            <Typography
+              sx={{
+                pt: '10px',
+                color: 'red',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
               {error.message}
             </Typography>
           )}
